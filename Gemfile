@@ -46,9 +46,9 @@ gem 'haml-rails'
 gem 'pundit'
 gem 'simple_form'
 
-# gem 'angularjs-rails-resource', '~> 1.1.1'
-# gem 'ng-rails-csrf'
-# gem 'angular_rails_csrf'
+gem 'angularjs-rails-resource', '~> 1.1.1'
+gem 'ng-rails-csrf'
+gem 'angular_rails_csrf'
 gem 'kaminari'
 
 gem "chronic"
