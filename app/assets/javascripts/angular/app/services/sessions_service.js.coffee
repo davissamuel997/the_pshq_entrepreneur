@@ -1,4 +1,4 @@
-TrackMyTrends.factory 'SessionsService', ['$resource', '$http', '$q', ($resource, $http, $q) ->
+ThePshqEntrepreneur.factory 'SessionsService', ['$resource', '$http', '$q', ($resource, $http, $q) ->
 
   getActiveOrganizations: $resource "/get_active_organizations.json", {}, query: { method: 'GET', isArray: false }
 

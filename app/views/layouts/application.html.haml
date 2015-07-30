@@ -4,6 +4,32 @@
     %title ThePshqEntrepreneur
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag "jquery-ui-1.11.2.custom.css"
+    = stylesheet_link_tag 'gritter/jquery.gritter.css'
+    = stylesheet_link_tag "chosen.css"
     = csrf_meta_tags
   %body
     = yield
+
+    = javascript_include_tag "modernizr-2.5.3.min"
+    
+    / jquery and friends
+    = javascript_include_tag "jquery/jquery-2.1.1.js"
+    = javascript_include_tag "jquery/jquery-ui-1.11.2.custom.js"
+    = javascript_include_tag "jquery/jquery.gritter.min.js"
+    = javascript_include_tag "jquery/jquery.icheck.js"
+    = javascript_include_tag "jquery/jquery.sparkline.js"
+    = javascript_include_tag "jquery/jquery.slimscroll.js"
+    = javascript_include_tag "jquery/jquery.dataTables.min.js"
+    = javascript_include_tag "jquery/jquery.metisMenu.js"
+
+    / backbone and friends
+    = javascript_include_tag "backbone/underscore-min.js"
+    = javascript_include_tag "backbone/backbone-min.js"
+    = javascript_include_tag "backbone/backbone.localStorage-min.js"
+
+    / = javascript_include_tag "theme/theme.js"
+    = javascript_include_tag "angular/app/angular_import.js"
+    = javascript_include_tag "application"
+
+    

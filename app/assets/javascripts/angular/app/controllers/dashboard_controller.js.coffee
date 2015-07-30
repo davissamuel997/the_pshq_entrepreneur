@@ -1,4 +1,4 @@
-TrackMyTrends.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', ($scope, $http, $location, $state, $stateParams) ->
+ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', ($scope, $http, $location, $state, $stateParams) ->
 
   init = ->
     console.log("inside the init")
