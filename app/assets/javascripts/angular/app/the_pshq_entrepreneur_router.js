@@ -13,7 +13,7 @@ ThePshqEntrepreneur.config(function($stateProvider, $urlRouterProvider, $locatio
     	url: '/',
 		  templateUrl: "/assets/dashboard/dashboard.html.haml",
 		  controller: 'DashboardController'
-    })
+    });
 
   // Enable HTML5. Removes /# from url.
   $locationProvider.html5Mode(true);

@@ -10,6 +10,8 @@
 *= require angular/vendor/angular-ui-router.js
 *= require angular/vendor/ui-bootstrap.js
 *= require angular/vendor/ui-bootstrap-tpls.js
+*= require ng-rails-csrf
+*= require angularjs/rails/resource
 
 *= require angular/app/plugins/chosen/chosen.jquery.js
 *= require angular/app/directives/chosen.js
