@@ -1,5 +1,5 @@
 var getCallRecordingHTML = function(id, recording) {
-  var horrendous = '<div class="jp-jplayer" id="jquery_jplayer_' + id + '"></div>' +
+  var html = '<div class="jp-jplayer" id="jquery_jplayer_' + id + '"></div>' +
                       '<div aria-label="media player" class="jp-audio" id="jp_container_' + id + '" role="application">' +
                           '<div class="jp-type-single">' +
                               '<div class="jp-gui jp-interface">' +
@@ -28,5 +28,5 @@ var getCallRecordingHTML = function(id, recording) {
 
                       '</script>'
 
-  return horrendous;
+  return html;
 }
