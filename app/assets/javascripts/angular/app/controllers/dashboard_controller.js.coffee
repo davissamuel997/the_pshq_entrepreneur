@@ -6,6 +6,9 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
   currentState = ->
     $state.current.name
 
+################################################################
+################# Request Control ##############################
+
   $scope.requestControl = {
 
   }
