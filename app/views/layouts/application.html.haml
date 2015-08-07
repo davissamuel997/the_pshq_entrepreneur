@@ -14,23 +14,20 @@
         %meta{:content => "magazine template, news template", :name => "keywords"}
           %meta{:content => "themejunkie", :name => "author"}
             / Title
-            %title theWorld
+            %title ThePSHQEntrepreneur
+
             = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
             = stylesheet_link_tag "jquery-ui-1.11.2.custom.css"
             = stylesheet_link_tag 'gritter/jquery.gritter.css'
             = stylesheet_link_tag "chosen.css"
-            / Stylesheets
-            / %link{:href => "style.css", :rel => "stylesheet", :type => "text/css"}/
-            / %link{:href => "css/font-awesome.css", :rel => "stylesheet", :type => "text/css"}/
-            / %link{:href => "css/colors/green.css", :rel => "stylesheet", :type => "text/css"}/
-            / %link{:href => "css/responsive.css", :rel => "stylesheet", :type => "text/css"}/
             = stylesheet_link_tag "theme/world-theme-include.css"
+
             / Favicon
             / %link{:href => "images/favicon.png", :rel => "shortcut icon", :type => "image/x-icon"}
   %body
 
-    %object{:data => "http://player.cinchcast.com/?platformId=1&assetType=single&assetId=7825147", :style => "width: 400px; height:370px", :type => "text/html"}
-    
+    / %object{:data => "http://player.cinchcast.com/?platformId=1&assetType=single&assetId=7825147", :style => "width: 400px; height:370px", :type => "text/html"}
+
     / Page / Start
     #page.hfeed.site.clearfix
       / Site Main / Start
@@ -49,7 +46,7 @@
                 %img{:alt => "Logo img", :src => ""}/
               %h1.site-title
                 %a{:href => 'index.html'}
-                  theWorld
+                  ThePSHQEntrepreneur
             / Primary Navigation / Start
             %nav#primary-nav
               %ul#primary-menu.sf-menu
