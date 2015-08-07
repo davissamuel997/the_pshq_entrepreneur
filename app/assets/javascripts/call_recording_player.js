@@ -1,4 +1,4 @@
-var getCallRecordingHTML = function(id, recording) {
+var getRecordingHTML = function(id, recording) {
   var html = '<div class="jp-jplayer" id="jquery_jplayer_' + id + '"></div>' +
                       '<div aria-label="media player" class="jp-audio" id="jp_container_' + id + '" role="application">' +
                           '<div class="jp-type-single">' +

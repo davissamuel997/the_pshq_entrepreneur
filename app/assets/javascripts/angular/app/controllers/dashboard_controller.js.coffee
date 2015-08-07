@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', ($scope, $http, $location, $state, $stateParams) ->
+ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', '$sce', ($scope, $http, $location, $state, $stateParams, $sce) ->
 
   init = ->
     console.log("inside the init")
@@ -22,6 +22,6 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 ################# Dashboard State ##############################
 
   if currentState() == 'dashboard'
-    $scope.greeting = 'Welcome to the Dashboard!'
     debugger
+    $scope.greeting = $sce.trustAsHtml(getRecordingHTML(1, "http://player.cinchcast.com/?platformId=1&assetType=single&assetId=7825147"))
 ]
