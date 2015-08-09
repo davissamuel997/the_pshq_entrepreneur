@@ -22,6 +22,5 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 ################# Dashboard State ##############################
 
   if currentState() == 'dashboard'
-    debugger
     $scope.greeting = $sce.trustAsHtml(getRecordingHTML(1, "http://player.cinchcast.com/?platformId=1&assetType=single&assetId=7825147"))
 ]
