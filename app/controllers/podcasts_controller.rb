@@ -6,7 +6,7 @@ class PodcastsController < ApplicationController
   end
 
   def podcast_params
-    params.require(:podcast)
+    params.require(:podcast).permit(:recording, :name, :air_date, :created_by)
   end
 
   private :podcast_params

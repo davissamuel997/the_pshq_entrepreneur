@@ -1,0 +1,21 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.make-white {
+	color: white;
+}
+
+.background-success {
+	background-color: #51a351;
+}
+
+.background-danger {
+	background-color: #bd362f;
+}
+
+.ajax_overlay {}
+
+.ajax_loader {
+  background: url("spinner_squares_circle.gif") no-repeat center center transparent;
+  width:100%;
+  height:100%;
+}

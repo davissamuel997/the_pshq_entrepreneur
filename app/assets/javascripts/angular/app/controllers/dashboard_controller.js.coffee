@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', '$sce', ($scope, $http, $location, $state, $stateParams, $sce) ->
+ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', ($scope, $http, $location, $state, $stateParams, ngAudio) ->
 
   init = ->
     console.log("inside the init")
@@ -11,6 +11,12 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 
   $scope.requestControl = {
 
+    getProgressBarWidth: ->
+      if $scope.audio && $scope.audio.progress
+        progress = $scope.audio.progress * 100
+
+        return progress + '%'
+
   }
 
 ################################################################
@@ -22,5 +28,5 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 ################# Dashboard State ##############################
 
   if currentState() == 'dashboard'
-    $scope.greeting = $sce.trustAsHtml(getRecordingHTML(1, "http://player.cinchcast.com/?platformId=1&assetType=single&assetId=7825147"))
+    $scope.audio = ngAudio.load("http://s3.amazonaws.com/pshq-podcasts/podcasts/recordings/000/000/004/original/show.mp3?1439150599");
 ]

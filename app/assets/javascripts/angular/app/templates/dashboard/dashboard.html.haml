@@ -1,5 +1,111 @@
 %h4 Here it is
-%div{'ng-bind-html' => 'greeting'}
+%button.btn.btn-sm.btn-success{"ng-click" => "audio.paused ? audio.play() : audio.pause()"} Pause
+%button{"ng-click" => "audio.restart()"} Stop
+%button{"ng-click" => "audio.muting = !audio.muting"} Mute
+%label Current Time {{audio.currentTime | trackTime}}
+%input.form-control{"ng-model" => "audio.currentTime", :type => "text"}
+  %label Volume
+  %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.volume", :step => "0.01", :type => "range"}
+.input-group
+  %span.input-group-addon Progress
+  %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.progress", :step => "0.01", :type => "range"}
+
+.input-group
+  %span.input-group-addon Progress
+  #bar.progress.active
+    .progress-bar.progress-bar-success.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :role => "progressbar", 'ng-style' => "{'width': requestControl.getProgressBarWidth()}"}
+
+{{requestControl.getProgressBarWidth()}}
+
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %td
+      src
+    %td
+      {{audio.src}}
+  %tr
+    %td
+      Current Time
+    %td
+      {{audio.currentTime | number : 2}}
+  %tr
+    %td Duration
+    %td {{audio.duration | number : 2}}
+  %tr
+    %td Progress (%)
+    %td {{audio.progress | number : 1}}
+  %tr
+    %td Volume
+    %td {{audio.volume | number : 1}}
+
+.col-md-offset-4
+  %h3
+    {{audio.id}} &ndash; {{audio.currentTime | trackTime}}
+    / {{audio}}
+  %p{"ng-if" => "audio.error"}
+    Error playing this sound.
+  %p{"ng-if" => "!audio.canPlay"}
+    Sound is loading, or you are viewing this on a device that doesn't support the
+    %code canPlay
+    property.
+.form-group.col-md-8.col-md-offset-4{"ng-if" => "!audio.error"}
+  %form.form-inline
+    .form-group.col-xs-9
+      %button.btn.btn-primary{"ng-click" => "audio.paused ? audio.play() : audio.pause()"} {{audio.paused ? "Play" : "Pause" }}
+      %button.btn.btn-danger{"ng-click" => "audio.restart()"} Stop
+      %button.btn.btn-neutral{"ng-click" => "audio.muting = !audio.muting"} {{audio.muting ? "Unmute" : "Mute" }}
+      /
+        <div class='checkbox pull-right'>
+        <label>
+        <input type=checkbox ng-model=audio.loop ng-click='audio.loop = !audio.loop'>Loop
+        </label>
+        
+        </div>
+    .form-group.col-xs-3
+      %label
+        Loop
+        %select.form-control.input-small.select{"ng-model" => "audio.loop", "ng-options" => "value for value in [true,0,1,2,3,4,5]"}
+    / <label>
+    / Loop
+    / </label>
+%form.form-horizontal
+  .form-group
+    %label.col-md-4.control-label{:for => "prependedtext"} Current Time
+    .col-md-8
+      .input-group
+        %span.input-group-addon Current Time
+        %input.form-control{"ng-model" => "audio.currentTime", :type => "text"}
+      %p.help-block
+        %strong> audioObject.currentTime:
+        The current time of the object in seconds
+  .form-group
+    %label.col-md-4.control-label{:for => "prependedtext"} Progress
+    .col-md-8
+      .input-group
+        %span.input-group-addon Progress
+        %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.progress", :step => "0.01", :type => "range"}
+      %p.help-block
+        %strong> audioObject.progress:
+        The progress of the object as a percentage (0-1);
+  .form-group
+    %label.col-md-4.control-label{:for => "prependedtext"} Volume
+    .col-md-8
+      .input-group
+        %span.input-group-addon Volume
+        %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.volume", :step => "0.01", :type => "range"}
+      = succeed "The" do
+        %strong audioObject.volume:
+      volume of the object as a percentage (0-1);
+  .form-group
+    %label.col-md-4.control-label{:for => "prependedtext"} Playback Rate
+    .col-md-8
+      .input-group
+        %span.input-group-addon Playback Rate
+        %input.form-control{:max => "1.5", :min => "0.5", "ng-model" => "audio.playbackRate", :step => "0.01", :type => "range"}
+      = succeed "The" do
+        %strong audioObject.playbackRate:
+      speed the audio plays at. (0.5 - 1.5);
+
 
 #primary.content-area
   / Featured Content / Start
