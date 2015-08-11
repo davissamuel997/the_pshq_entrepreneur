@@ -46,3 +46,4 @@ gem 'angular_rails_csrf'
 gem 'kaminari'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
+gem 'responders', '~> 2.0'

@@ -175,6 +175,8 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
     sass (3.4.16)
@@ -254,6 +256,7 @@ DEPENDENCIES
   rails_apps_pages
   rails_email_validator
   rails_layout
+  responders (~> 2.0)
   sass-rails (~> 5.0)
   simple_form
   spring

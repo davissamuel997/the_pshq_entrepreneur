@@ -9,4 +9,12 @@ class Podcast < ActiveRecord::Base
     {:bucket => config["RECORDING_BUCKET"], :access_key_id => config["AMAZON_ACCESS_KEY"], :secret_access_key => config["AMAZON_SECRET_KEY"]}
   end
 
+  def self.get_podcasts(options = {})
+  	data = {:errors => false}
+
+  	data[:podcasts] = Podcast.all.order('created_at DESC')
+
+  	data
+  end
+
 end

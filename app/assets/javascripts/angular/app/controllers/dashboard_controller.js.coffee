@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', ($scope, $http, $location, $state, $stateParams, ngAudio) ->
+ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'DashboardService', ($scope, $http, $location, $state, $stateParams, ngAudio, DashboardService) ->
 
   init = ->
     console.log("inside the init")
@@ -10,6 +10,11 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 ################# Request Control ##############################
 
   $scope.requestControl = {
+
+    getPodcasts: ->
+      DashboardService.getPodcasts.query({}, (responseData) ->
+        debugger
+      )
 
     getProgressBarWidth: ->
       if $scope.audio && $scope.audio.progress
@@ -28,5 +33,7 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 ################# Dashboard State ##############################
 
   if currentState() == 'dashboard'
-    $scope.audio = ngAudio.load("http://s3.amazonaws.com/pshq-podcasts/podcasts/recordings/000/000/004/original/show.mp3?1439150599");
+    $scope.requestControl.getPodcasts()
+
+    # $scope.audio = ngAudio.load("http://s3.amazonaws.com/pshq-podcasts/podcasts/recordings/000/000/004/original/show.mp3?1439150599");
 ]
