@@ -11,6 +11,8 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 
   $scope.requestControl = {
 
+    audio: null
+
     podcasts: []
 
     selectedPodcast: null
@@ -27,11 +29,12 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 
         return progress + '%'
 
-    loadPodcast: ->
-      if this.selectedPodcast
-        # ngAudio.load(this.selectedPodcast.recording)
-        debugger
+    loadPodcast: (podcast) ->
+      if podcast && podcast.recording && podcast.recording.length > 0
+        this.selectedPodcast = podcast
+        $scope.audio = ngAudio.load(this.selectedPodcast.recording)
 
+        debugger;
 
   }
 

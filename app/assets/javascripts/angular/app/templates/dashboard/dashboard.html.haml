@@ -123,66 +123,10 @@
           .panel-body.body-scrollable
             / START list group
             .list-group
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right just now
-                = succeed "Calendar" do
-                  %em.fa.fa-fw.fa-calendar.mr
-                updated
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right 4 minutes ago
-                = succeed "Commented" do
-                  %em.fa.fa-fw.fa-comment.mr
-                on a post
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right 23 minutes ago
-                = succeed "Order" do
-                  %em.fa.fa-fw.fa-truck.mr
-                392 shipped
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right 46 minutes ago
-                = succeed "Invoice" do
-                  %em.fa.fa-fw.fa-money.mr
-                653 has been paid
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right 1 hour ago
-                = succeed "A" do
-                  %em.fa.fa-fw.fa-user.mr
-                new user has been added
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right 2 hours ago
-                = succeed "Completed" do
-                  %em.fa.fa-fw.fa-check.mr
-                task: "pick up dry cleaning"
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right yesterday
-                = succeed "Saved" do
-                  %em.fa.fa-fw.fa-globe.mr
-                the world
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right two days ago
-                = succeed "Completed" do
-                  %em.fa.fa-fw.fa-check.mr
-                task: "fix error on sales page"
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right 1 hour ago
-                = succeed "A" do
-                  %em.fa.fa-fw.fa-user.mr
-                new user has been added
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right 2 hours ago
-                = succeed "Completed" do
-                  %em.fa.fa-fw.fa-check.mr
-                task: "pick up dry cleaning"
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right yesterday
-                = succeed "Saved" do
-                  %em.fa.fa-fw.fa-globe.mr
-                the world
-              %a.list-group-item{:href => "javascript:void(0);"}
-                %span.label.label-purple.pull-right two days ago
-                = succeed "Completed" do
-                  %em.fa.fa-fw.fa-check.mr
-                task: "fix error on sales page"
+              %a.list-group-item.make-black{'ng-repeat' => 'podcast in requestControl.podcasts', :href => '', 'ng-click' => 'requestControl.loadPodcast(podcast)'}
+                {{podcast.name}}
+                / %em.fa.fa-fw.fa-arrow-circle-right.mr
+
     / END list group
   .panel-footer.text-right
     %a.btn.btn-default.btn-sm{:href => "javascript:void(0);"} View All Activity
