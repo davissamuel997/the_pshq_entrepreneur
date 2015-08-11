@@ -12,7 +12,14 @@ class Podcast < ActiveRecord::Base
   def self.get_podcasts(options = {})
   	data = {:errors => false}
 
-  	data[:podcasts] = Podcast.all.order('created_at DESC')
+  	data[:podcasts] = Podcast.all.order('created_at DESC').map { |podcast| {
+  			podcast_id:  podcast.id,
+  			name:        podcast.name,
+  			air_date:    podcast.air_date,
+  			description: podcast.description,
+  			recording:   podcast.recording.present? && podcast.recording.url.present? && podcast.recording.url.size > 0 ? podcast.recording.url : nil
+  		} 
+  	}
 
   	data
   end

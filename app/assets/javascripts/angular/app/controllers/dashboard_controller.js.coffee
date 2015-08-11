@@ -11,9 +11,14 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 
   $scope.requestControl = {
 
+    podcasts: []
+
+    selectedPodcast: null
+
     getPodcasts: ->
       DashboardService.getPodcasts.query({}, (responseData) ->
-        debugger
+        if responseData.errors == false
+          $scope.requestControl.podcasts = responseData.podcasts
       )
 
     getProgressBarWidth: ->
@@ -21,6 +26,12 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
         progress = $scope.audio.progress * 100
 
         return progress + '%'
+
+    loadPodcast: ->
+      if this.selectedPodcast
+        # ngAudio.load(this.selectedPodcast.recording)
+        debugger
+
 
   }
 
