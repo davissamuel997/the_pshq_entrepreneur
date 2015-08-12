@@ -4,11 +4,12 @@
 *= require theme2/animate/animate.css
 *= require theme2/bootstrap/css/bootstrap-switch.css
 *= require theme2/simple-line-icons/simple-line-icons.css
-*= require theme2/core.css
 *= require theme2/system.css
 *= require theme2/styles.css
 *= require theme2/jquery.steps.css
 */
+
+/*theme2/core.css*/
 
 .chosen-container {
   /* This is the only width setting you'll need to change. */
