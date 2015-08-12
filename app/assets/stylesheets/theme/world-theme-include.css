@@ -1,7 +1,12 @@
 /*
-*= theme/reset.css
-*= theme/style.css
-*= theme/foot-awesome.css
-*= theme/colors/green.css
-*= theme/responsive.css
+*= require theme/reset.css
+*= require theme/style.css
+*= require theme/font-awesome.css
+*= require theme/colors/green.css
+*= require theme/responsive.css
 */
+
+.body-scrollable {
+    max-height: 360px; 
+    overflow-y: scroll;
+}

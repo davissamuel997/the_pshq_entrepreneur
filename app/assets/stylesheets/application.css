@@ -13,8 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.body-scrollable {
-    max-height: 360px; 
-    overflow-y: scroll;
-}
