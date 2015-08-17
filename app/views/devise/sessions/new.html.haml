@@ -1,0 +1,236 @@
+
+%div{'ng-controller' => 'SessionsController'}
+  %section{'ng-if' => "viewControl.selectedView === 'login'"}
+    .page-form
+      .header-content.text-center
+        %h1 Login to your account
+      .body-content
+        .alert.alert-danger.alert-dismissible.alert-custom.hide{:role => "alert"}
+          %button.close{"data-dismiss" => "alert", :type => "button"}
+            %span &times;
+          Enter any username and password.
+        .list-group
+          = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:role => 'form', :id => 'login-form', :class => 'form-horizontal'}) do |f|
+            .list-group-item.relative
+              = f.input_field :email, :required => false, :autofocus => true, :class => 'form-control', :placeholder => 'Email'
+            .list-group-item.relative
+              = f.input_field :password, :require => false, :class => 'form-control', :placeholder => 'Password'
+
+            %br
+
+            .form-group.pull-left
+              %label
+                %input.form-control-shadow{:type => "checkbox"}
+                  \&nbsp;
+                  Remember me
+            .form-group.pull-right
+              %a.btn-link{'ng-click' => "viewControl.changeView('reset_password')"} Forgotten your Password?
+            .clearfix
+            .row
+              .col-sm-5
+                %button#loginBtn.btn.btn-success.btn-circle.btn-block.btn-shadow.mbs{:type => "submit", :name => 'commit'} Log in
+              .col-sm-7
+                %a.btn.btn-social.btn-google-plus.btn-circle.btn-block.btn-shadow.mbs{:href => "#"}
+                  %i.fa.fa-google-plus>
+                  Login with Google
+            %hr
+              .form-group
+                %p
+                  Don't have an account?
+                  %a#btn-register.btn-link{'ng-click' => "viewControl.changeView('sign_up')"} Create an account
+
+  %section{'ng-if' => "viewControl.selectedView === 'reset_password'"}
+    %h4 Hello world
+    
+  %section{'ng-if' => "viewControl.selectedView === 'sign_up'"}
+    .page-form-wizard
+      .panel
+        .panel-heading
+          .caption PSHQCallTracker.com
+        .panel-body
+          #viewcode-rootwizard-script.viewcode-example
+            #rootwizard.wizard-wrapper
+              .navbar
+                .navbar-inner
+                  %ul.nav
+                    %li{'ng-class' => 'wizardControl.checkCurrentTab(1)'}
+                      %a{"data-toggle" => "tab", 'ng-click' => 'wizardControl.changeTab(1)'}
+                        %i.icon-user
+                        %p
+                          %span 1. General Details
+                          Set up account
+                    %li{'ng-class' => 'wizardControl.checkCurrentTab(2)'}
+                      %a{"data-toggle" => "tab", 'ng-click' => 'wizardControl.changeTab(2)'}
+                        %i.icon-layers
+                        %p
+                          %span 2. Organization
+                          Select or Create New
+                    %li{'ng-class' => 'wizardControl.checkCurrentTab(3)'}
+                      %a{"data-toggle" => "tab", 'ng-click' => 'wizardControl.changeTab(3)'}
+                        %i.icon-basket
+                        %p
+                          %span 3. Cart detail
+                          Check products
+                    %li{'ng-class' => 'wizardControl.checkCurrentTab(4)'}
+                      %a{"data-toggle" => "tab", 'ng-click' => 'wizardControl.changeTab(4)'}
+                        %i.icon-check
+                        %p
+                          %span 4. Finish
+                          Confirm all
+              #bar.progress.active
+                .progress-bar.progress-bar-success.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :role => "progressbar", 'ng-style' => "{'width': wizardControl.getProgressBarWidth()}"}
+
+              .tab-content
+                #tab1-wizard-custom-circle.tab-pane{'ng-class' => 'wizardControl.checkCurrentTab(1)'}
+                  %section.widget
+                    %fieldset
+                      %legend.section
+                        %h4
+                          %i.icon-notebook
+                          %strong General
+                      %form.form-horizontal
+                        .form-group
+                          %label.control-label.col-md-3
+                            First Name
+                            %span.require *
+                          .col-md-6{'ng-class' => 'signUpControl.firstNameCheck()'}
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-user
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'signUpControl.params.first_name', :type => :text}
+                        .form-group
+                          %label.control-label.col-md-3
+                            Last Name
+                            %span.require *
+                          .col-md-6{'ng-class' => 'signUpControl.lastNameCheck()'}
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-user
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'signUpControl.params.last_name', :type => :text}
+                        .form-group
+                          %label.control-label.col-md-3
+                            Email
+                            %span.require *
+                          .col-md-6{'ng-class' => 'signUpControl.emailCheck()'}
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-user
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'signUpControl.params.email', :type => :text}
+                          .has-error
+                            %label.control-label.col-md-3{'ng-if' => 'signUpControl.params.email.length > 0 && !signUpControl.verifyEmail(signUpControl.params.email)'}
+                              Email Not Valid!
+                          .has-success
+                            %label.control-label.col-md-3{'ng-if' => 'signUpControl.params.email.length > 0 && signUpControl.verifyEmail(signUpControl.params.email)'}
+                              Email Valid!
+                        .form-group
+                          %label.control-label.col-md-3
+                            Password
+                            %span.require *
+                          .col-md-6{'ng-class' => 'signUpControl.passwordCheck()'}
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-key
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'signUpControl.params.password', :type => 'password'}
+                        .form-group
+                          %label.control-label.col-md-3
+                            Re-Type Password
+                            %span.require *
+                          .col-md-6{'ng-class' => 'signUpControl.passwordConfirmationCheck()'}
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-key
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'signUpControl.params.password_confirmation', :type => 'password'}
+                          .has-error
+                            %label.control-label.col-md-3{'ng-if' => 'signUpControl.params.password_confirmation.length > 0 && signUpControl.params.password_confirmation !== signUpControl.params.password'}
+                              Passwords Don't Match!
+                          .has-success
+                            %label.control-label.col-md-3{'ng-if' => 'signUpControl.params.password_confirmation.length > 0 && signUpControl.params.password_confirmation === signUpControl.params.password'}
+                              Passwords Match!
+
+                #tab2-wizard-custom-circle.tab-pane{'ng-class' => 'wizardControl.checkCurrentTab(2)'}
+                  .tabbable-line-wrapper
+                    .tabbable-line
+                      %ul.nav.nav-tabs
+                        %li{'ng-class' => 'organizationTabControl.checkCurrentTab(1)'}
+                          %a{"data-toggle" => "tab", 'ng-click' => 'organizationTabControl.changeTab(1)'} Select an Existing Organization
+                        %li{'ng-class' => 'organizationTabControl.checkCurrentTab(2)'}
+                          %a{"data-toggle" => "tab", 'ng-click' => 'organizationTabControl.changeTab(2)'} Create a New Organization
+                      .tab-content
+                        #tab_default_1.tab-pane{'ng-class' => 'organizationTabControl.checkCurrentTab(1)'}
+                          %form.form-horizontal
+                            .form-group
+                              %label.control-label.col-md-3
+                                Selected Organization
+                                %span.require *
+                              .col-md-6
+                                %select.form-control{'ng-options' => 'option.id as option.name for option in signUpControl.activeOrganizations', :chosen => '', 'ng-model' => 'signUpControl.selectedExistingOrganization'}
+                                  %option
+                        #tab_default_2.tab-pane{'ng-class' => 'organizationTabControl.checkCurrentTab(2)'}
+                          %form.form-horizontal
+                            .form-group
+                              %label.control-label.col-md-3
+                                Organization Name
+                                %span.require *
+                              .col-md-6{'ng-class' => 'signUpControl.organizationNameCheck()'}
+                                .input-group.input-group-circle-left
+                                  %span.input-group-addon
+                                    %i.fa.icon-pencil
+                                  %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'signUpControl.organizationParams.name', :type => :text}
+                #tab3-wizard-custom-circle.tab-pane.fadeIn{'ng-class' => 'wizardControl.checkCurrentTab(3)'}
+                  %section.widget{'ng-controller' => 'ChargesController'}
+                    %fieldset
+                      %legend.section
+                        %h4
+                          %i.icon-notebook
+                          %strong Payment Details
+                      %form.form-horizontal
+                        .form-group
+                          %label.control-label.col-md-3
+                            Card Number
+                            %span.require *
+                          .col-md-6
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-user
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'paymentDetailsControl.params.card_number'}
+                        .form-group
+                          %label.control-label.col-md-3
+                            MM / YY
+                            %span.require *
+                          .col-md-6
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-user
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'paymentDetailsControl.params.expiration_date'}
+                        .form-group
+                          %label.control-label.col-md-3
+                            CVC
+                            %span.require *
+                          .col-md-6
+                            .input-group.input-group-circle-left
+                              %span.input-group-addon
+                                %i.fa.fa-user
+                              %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'paymentDetailsControl.params.cvc'}
+                        %form{:action => "", :method => "POST"}
+                          %script.stripe-button{"data-amount" => "2000", "data-description" => "2 widgets ($20.00)", "data-image" => "/128x128.png", "data-key" => "pk_test_6pRNASCoBOKtIshFeQd4XMUh", "data-name" => "Demo Site", :src => "https://checkout.stripe.com/checkout.js"} Stripe Test
+                        %button.btn.btn-sm{'ng-click' => 'ChargesController.createToken()'} Test Create
+                #tab4-wizard-custom-circle.tab-pane.fadeIn{'ng-class' => 'wizardControl.checkCurrentTab(4)'}
+                  %h3.mbxl Thank you!
+                  %p Congragulation! You have completed checkout steps.
+                  %p Thank you for use our products.
+                %ul.pager.wizard
+                  %li{'ng-class' => 'wizardControl.checkWizardPreviousButton()'}
+                    %button.btn.btn-info.button-previous{'ng-click' => 'wizardControl.previousTab()'}
+                      %i.fa.fa-arrow-circle-o-left.mrx
+                      Previous
+                  %li{'ng-class' => 'wizardControl.checkWizardNextButton()'}
+                    %button.btn.btn-info.button-next.mlm{'ng-click' => 'wizardControl.nextTab()'}
+                      Next
+                      %i.fa.fa-arrow-circle-o-right.mlx
+            %a.btn-view-code{:href => "javascript:;", :style => "display: none;"}
+              %i.fa.fa-code
+      %ul.pager
+        %li.pull-left
+          %a{:href => '', 'ng-click' => "viewControl.changeView('login')"}
+            <- Back to Login
+
