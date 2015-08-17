@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
   # include Devise::Controllers::Helpers
 
   INCOMING_REQUESTS = [
+    :welcome,
+    :get_podcasts
   ]
 
-  # before_filter :configure_permitted_parameters, if: :devise_controller?
-  # before_filter :authenticate_user!, except: INCOMING_REQUESTS
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :authenticate_user!, except: INCOMING_REQUESTS
 
   # rescue_from CanCan::AccessDenied do |exception|
   #   response = {root: true , alert: exception.message}
@@ -17,8 +19,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name]
-  # end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name]
+  end
 
 end
