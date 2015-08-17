@@ -216,6 +216,12 @@
                       %a{:href => "archive.html"} Sub Menu 2
                     %li
                       %a{:href => "archive.html"} Sub Menu 3
+                %li.pull-right
+                  - if !current_user
+                    %a{type: "button", 'data-toggle' => 'modal', href: "#send-recording", :class => "send-recording"}
+                      Login
+                      %i.fa.icon-lock
+                    = render :partial => '/layouts/login_modal'
             / Secondary Navigation / End
             .header-social-icons
               %span Follow:
@@ -260,6 +266,7 @@
     = javascript_include_tag "backbone/backbone-min.js"
     = javascript_include_tag "backbone/backbone.localStorage-min.js"
 
+    = javascript_include_tag "theme/theme.js"
     = javascript_include_tag "angular/app/angular_import.js"
     = javascript_include_tag "application"
 
