@@ -47,3 +47,12 @@ gem 'kaminari'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem 'responders', '~> 2.0'
+
+gem 'devise'
+gem 'devise_security_extension'
+gem 'devise_invitable'
+gem 'rails_email_validator'
+gem 'omniauth'
+gem 'devise-token_authenticatable'
+gem 'activerecord-session_store'
+
