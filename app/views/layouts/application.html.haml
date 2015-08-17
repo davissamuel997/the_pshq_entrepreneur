@@ -221,7 +221,6 @@
                     %a{type: "button", 'data-toggle' => 'modal', href: "#send-recording"}
                       Login
                       %i.fa.icon-lock
-                    = render :partial => '/layouts/login_modal'
             / Secondary Navigation / End
             .header-social-icons
               %span Follow:
@@ -243,6 +242,7 @@
 
         = yield
 
+    = render :partial => '/layouts/login_modal'
     = javascript_include_tag "modernizr-2.5.3.min"
     
     / jquery and friends

@@ -1,14 +1,10 @@
-.modal.fade{id: "send-recording", style: "display: none;"}
+.modal.fade{id: "send-recording", style: "display: none;", 'ng-controller' => 'SessionsController'}
   .modal-dialog
     .modal-content
-      .modal-header.badge-info
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button", 'ng-click' => 'requestControl.resetCallToSendParams()'} ×
-        %h5.make-white Send Recording
+      .modal-header{:style => "background-color: #333399;"}
+        %button.close.make-white{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button", 'ng-click' => 'requestControl.resetCallToSendParams()'} ×
+        %h5.make-white Login to Your Account
       .modal-body
-        %p
-          Please type the email address that you want to send the recording to:
-
-        %br
 
         .padding-md.clearfix
           %span.col-md-12
@@ -17,20 +13,36 @@
                 %label.control-label.col-md-3
                   Email
                   %span.require *
-                .col-md-6{'ng-class' => 'requestControl.emailCheck()'}
+                .col-md-6
                   .input-group.input-group-circle-left
                     %span.input-group-addon
                       %i.fa.fa-user
-                    %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'requestControl.emailToSendRecording', :type => :text}
+                    %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'requestControl.params.email', :type => :text}
                 .has-error
-                  %label.control-label.col-md-3{'ng-if' => 'requestControl.emailToSendRecording.length > 0 && !requestControl.verifyEmail(requestControl.emailToSendRecording)'}
+                  %label.control-label.col-md-3{'ng-if' => 'requestControl.params.email.length > 0 && !requestControl.verifyEmail(requestControl.params.email)'}
                     Email Not Valid!
                 .has-success
-                  %label.control-label.col-md-3{'ng-if' => 'requestControl.emailToSendRecording.length > 0 && requestControl.verifyEmail(requestControl.emailToSendRecording)'}
+                  %label.control-label.col-md-3{'ng-if' => 'requestControl.params.email.length > 0 && requestControl.verifyEmail(requestControl.params.email)'}
                     Email Valid!
+
+        .padding-md.clearfix
+          %span.col-md-12
+            %form.form-horizontal
+              .form-group
+                %label.control-label.col-md-3
+                  Password
+                  %span.require *
+                .col-md-6
+                  .input-group.input-group-circle-left
+                    %span.input-group-addon
+                      %i.fa.fa-key
+                    %input.form-control{:placeholder => 'Enter..', 'ng-model' => 'requestControl.params.password', :type => :password}
+                / .has-error
+                /   %label.control-label.col-md-3{'ng-if' => 'requestControl.params.password.length > 0 && !requestControl.verifyEmail(requestControl.params.password)'}
+                /     Email Not Valid!
 
       .modal-footer
         .control-group
           .input-group-btn
-            %button.btn.btn.btn-sm.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", 'ng-click' => 'requestControl.resetCallToSendParams()'} Close
-            %button.btn.btn.btn-sm.btn-success.send-call-recording{"aria-hidden" => "true", "data-dismiss" => "modal", 'ng-click' => 'requestControl.sendCallRecording()', 'ng-class' => 'requestControl.checkSendRecordingButton()'} Send Recording
+            %button.btn.btn.btn-sm.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", 'ng-click' => 'requestControl.resetCallToSendParams()'} Cancel
+            %button.btn.btn.btn-sm.btn-success{"aria-hidden" => "true", "data-dismiss" => "modal", 'ng-click' => 'requestControl.login()', 'ng-class' => 'requestControl.checkLoginParams()'} Login
