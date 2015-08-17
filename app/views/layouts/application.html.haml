@@ -218,7 +218,7 @@
                       %a{:href => "archive.html"} Sub Menu 3
                 %li.pull-right
                   - if !current_user
-                    %a{type: "button", 'data-toggle' => 'modal', href: "#send-recording", :class => "send-recording"}
+                    %a{type: "button", 'data-toggle' => 'modal', href: "#send-recording"}
                       Login
                       %i.fa.icon-lock
                     = render :partial => '/layouts/login_modal'
