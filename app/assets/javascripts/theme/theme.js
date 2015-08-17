@@ -2,6 +2,7 @@
 *= require theme/bootstrap.js
 *= require theme/bootstrap-hover-dropdown.js
 *= require theme/bootstrap-switch.min.js
+*= require theme/bootstrap-transition.js
 *= require theme/html5shiv.js
 *= require theme/respond.min.js
 *= require theme/jquery.cookie.js
