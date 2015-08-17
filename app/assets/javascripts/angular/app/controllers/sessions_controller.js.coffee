@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'SessionsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'DashboardService', ($scope, $http, $location, $state, $stateParams, ngAudio, DashboardService) ->
+ThePshqEntrepreneur.controller 'SessionsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'SessionsService', ($scope, $http, $location, $state, $stateParams, ngAudio, SessionsService) ->
 
   init = ->
     console.log("inside the init")
@@ -46,7 +46,9 @@ ThePshqEntrepreneur.controller 'SessionsController', ['$scope', '$http', '$locat
       if this.params.last_name && this.params.last_name.length > 0 then 'has-success' else 'has-error'
 
     login: ->
-    	debugger
+    	SessionsService.login.query({ email: '', password: '' }, (responseData) ->
+    		debugger
+    	)
 
     passwordCheck: ->
       if this.params.password && this.params.password.length > 0 then 'has-success' else 'has-error'
