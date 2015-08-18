@@ -23,10 +23,10 @@ a:visited,
 #related-content .jcarousel-control-prev:hover .fa,
 #related-content .jcarousel-control-next:hover .fa,
 .dropcap {
-	color: #71a42f;
+	color: #2FC754;
 }
 .sf-mega-posts .entry-title a:hover {
-	color: #71a42f !important;
+	color: #2FC754 !important;
 }
 /**
  * 2.0 Background
@@ -57,5 +57,5 @@ a:visited,
 #featured-content .jcarousel-control-next:hover,
 #related-content .jcarousel-control-prev:hover,
 #related-content .jcarousel-control-next:hover {
-	border-color: #71a42f;
+	border-color: #2FC754;
 }
