@@ -11,15 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817204704) do
+ActiveRecord::Schema.define(version: 20150818185355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "post_date"
+    t.text     "description"
+    t.boolean  "approved",         default: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "podcasts", force: :cascade do |t|
-    t.string   "name"
+    t.text     "name"
     t.datetime "air_date"
-    t.integer  "created_by"
+    t.integer  "user_id"
     t.text     "description"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -29,7 +44,18 @@ ActiveRecord::Schema.define(version: 20150817204704) do
     t.datetime "recording_updated_at"
   end
 
-  add_index "podcasts", ["created_by"], name: "index_podcasts_on_created_by", using: :btree
+  add_index "podcasts", ["user_id"], name: "index_podcasts_on_user_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "name"
+    t.datetime "post_date"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
