@@ -2,6 +2,8 @@ class PodcastsController < ApplicationController
 
   # load_and_authorize_resource param_method: :call_params
 
+  skip_before_filter :authenticate_user!, only: [:welcome, :get_podcasts]
+
   respond_to :json, :html
 
   def welcome
