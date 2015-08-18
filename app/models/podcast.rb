@@ -1,5 +1,7 @@
 class Podcast < ActiveRecord::Base
 
+  has_many :comments, as: :commentable
+
   has_attached_file :recording, :storage => :s3, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
   validates_attachment_content_type :recording, :content_type => ['audio/mpeg']
 
