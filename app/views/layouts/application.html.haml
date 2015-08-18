@@ -29,18 +29,12 @@
       / Site Main / Start
       %main#main.site-main{:role => "main"}
 
-        .header-ad
-          %a{:href => "/"}
-            = image_tag "PROBLEMSOLUTION-LO-FF-728-90.jpg"
-
         %header#masthead.site-header.clearfix{:role => "banner"}
           .container
-            #logo
-              / %a{:href => "index.html"}
-              /   %img{:alt => "Logo img", :src => ""}/
-              %h1.site-title
-                %a{:href => 'index.html'}
-                  ThePSHQEntrepreneur
+            #logo.no-padding
+              %a{:href => "index.html"}
+                = image_tag "PSHQ-logo.jpg"
+                
             / Primary Navigation / Start
             %nav#primary-nav
               %ul#primary-menu.sf-menu
