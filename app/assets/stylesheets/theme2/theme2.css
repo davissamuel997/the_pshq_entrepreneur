@@ -76,6 +76,15 @@
 }
 
 .make-pshq-green {
-  color: #339900;
+  color: #2FC754;
+}
+
+.panel > .panel-heading-custom {
+  background: #7972AF; 
+  color: #fff;
+}
+
+.make-pshq-blue {
+  color: #7972AF;
 }
 
