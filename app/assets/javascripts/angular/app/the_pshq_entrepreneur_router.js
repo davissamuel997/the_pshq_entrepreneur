@@ -30,6 +30,12 @@ ThePshqEntrepreneur.config(function($stateProvider, $urlRouterProvider, $locatio
       controller: 'PodcastsController'
     })
 
+    .state('edit_podcast', {
+      url: '/podcasts/:podcast_id/edit',
+      templateUrl: '/assets/podcasts/edit.html.haml',
+      controller: 'PodcastsController'
+    })
+
 ///////////////////////////////////////////////////////////////////
 /////////////////////// Session Routes ////////////////////////////
 

@@ -17,6 +17,16 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
     pagination: null
 
+    params: {
+
+    	air_date: null
+
+    	description: null
+
+    	name: null
+
+    }
+
     podcast: null
 
     podcasts: []
@@ -32,6 +42,10 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
     		PodcastsService.findPodcast.query({ podcast_id: $stateParams["podcast_id"] }, (responseData) ->
     			if responseData.errors == false
     				$scope.requestControl.podcast = responseData.podcast
+    				
+    				$scope.requestControl.params.name = responseData.podcast.name
+    				$scope.requestControl.params.air_date = responseData.podcast.air_date
+    				$scope.requestControl.params.description = responseData.podcast.description
 
     				$scope.audio = ngAudio.load($scope.requestControl.podcast.recording)
     		)
@@ -48,13 +62,6 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
         progress = $scope.audio.progress * 100
 
         return progress + '%'
-
-    loadPodcast: (podcast) ->
-      if podcast && podcast.recording && podcast.recording.length > 0
-        this.selectedPodcast = podcast
-        $scope.audio = ngAudio.load(this.selectedPodcast.recording)
-
-        debugger;
 
   }
 
@@ -73,6 +80,12 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 ################# Show State ###################################
 
   if currentState() == 'show_podcast'
+  	$scope.requestControl.findPodcast()
+
+################################################################
+################# Edit State ###################################
+
+  if currentState() == 'edit_podcast'
   	$scope.requestControl.findPodcast()
 
 ]
