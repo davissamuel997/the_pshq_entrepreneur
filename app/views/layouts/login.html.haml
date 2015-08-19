@@ -1,23 +1,32 @@
 !!!
-%html.no-ie{:lang => "en", 'ng-app' => 'ThePshqEntrepreneur'}
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html{:lang => "en", 'ng-app' => 'ThePshqEntrepreneur'}
+  / <![endif]
   %head
     / Meta
-    %base{:href => "/"}/
-    %meta{:charset => "utf-8"}
-      %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0", :name => "viewport"}
-        %meta{:content => "", :name => "description"}
-          %meta{:content => "", :name => "keywords"}
-            %meta{:content => "", :name => "author"}
-              %title ThePSHQEntrepreneur
-              
+    %base{:href => "/"}
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
+      %meta{:content => "TheWorld is a fresh and clean magazine website template which is beautiful and well-organized", :name => "description"}
+        %meta{:content => "magazine template, news template", :name => "keywords"}
+          %meta{:content => "themejunkie", :name => "author"}
+            / Title
+            %title ThePSHQEntrepreneur
+
             = stylesheet_link_tag "jquery-ui-1.11.2.custom.css"
             = stylesheet_link_tag 'gritter/jquery.gritter.css'
             = stylesheet_link_tag "chosen.css"
             = stylesheet_link_tag "theme/world-theme-include.css"
             = stylesheet_link_tag "theme2/theme2.css"
   %body
-    .wrapper
-      = yield
+
+    #page.hfeed.site.clearfix
+
+      %main#main.site-main{:role => "main"}
+        = yield
 
     = javascript_include_tag "modernizr-2.5.3.min"
     
