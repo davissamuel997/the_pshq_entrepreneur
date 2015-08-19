@@ -2,7 +2,8 @@ class PodcastsController < ApplicationController
 
   # load_and_authorize_resource param_method: :call_params
 
-  skip_before_filter :authenticate_user!, only: [:welcome, :get_podcasts, :find_podcast]
+  skip_before_filter :authenticate_user!, only: [:welcome, :get_podcasts, 
+                                                 :find_podcast, :update_podcast]
 
   respond_to :json, :html
 
@@ -17,6 +18,12 @@ class PodcastsController < ApplicationController
 
   def find_podcast
     response = Podcast.find_podcast(params)
+
+    respond_with response
+  end
+
+  def update_podcast
+    response = Podcast.update_podcast(params, true)
 
     respond_with response
   end

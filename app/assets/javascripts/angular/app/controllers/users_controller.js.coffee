@@ -22,5 +22,5 @@ ThePshqEntrepreneur.controller 'UsersController', ['$scope', '$http', '$location
 ################# Meet the Hosts State #########################
 
   if currentState() == 'meet_the_hosts'
-  	debugger
+  	console.log("inside the hosts state")
 ]

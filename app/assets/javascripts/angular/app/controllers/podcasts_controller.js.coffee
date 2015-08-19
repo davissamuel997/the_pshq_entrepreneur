@@ -33,6 +33,12 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
     selectedPodcast: null
 
+    cancel: ->
+    	if this.podcast && this.podcast.podcast_id && parseInt(this.podcast.podcast_id, 10) > 0
+    	  $location.path '/podcasts/' + this.podcast.podcast_id
+    	else
+    	  $location.path '/podcasts'
+
     changePage: (page_number) ->
       this.current_page = page_number
       this.getPodcasts()
@@ -42,7 +48,7 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
     		PodcastsService.findPodcast.query({ podcast_id: $stateParams["podcast_id"] }, (responseData) ->
     			if responseData.errors == false
     				$scope.requestControl.podcast = responseData.podcast
-    				
+
     				$scope.requestControl.params.name = responseData.podcast.name
     				$scope.requestControl.params.air_date = responseData.podcast.air_date
     				$scope.requestControl.params.description = responseData.podcast.description
@@ -62,6 +68,13 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
         progress = $scope.audio.progress * 100
 
         return progress + '%'
+
+    updatePodcast: ->
+    	if this.podcast && this.podcast.podcast_id && parseInt(this.podcast.podcast_id, 10) > 0
+    	  PodcastsService.updatePodcast.query({ podcast_id: this.podcast.podcast_id, podcast_params: this.params }, (responseData) ->
+    		  if responseData.errors == false
+    		  	$location.path '/podcasts/' + $scope.requestControl.podcast.podcast_id
+    	  )
 
   }
 

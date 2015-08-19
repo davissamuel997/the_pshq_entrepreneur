@@ -55,6 +55,25 @@ class Podcast < ActiveRecord::Base
     data
   end
 
+  def self.update_podcast(options = {}, need_parse = false)
+    data = {:errors => false}
+
+    if options[:podcast_id].present? && options[:podcast_id].to_i > 0 && options[:podcast_params].present?
+
+      podcast = Podcast.find(options[:podcast_id])
+
+      podcast_params = need_parse ? JSON.parse(options[:podcast_params]) : options[:podcast_params]
+
+      unless podcast.update(podcast_params)
+        data[:errors] = true
+      end
+    else
+      data[:errors] = true
+    end
+
+    data
+  end
+
   # This paginates all of the data for the response of the js.
   def self.pagination_data element_count, current_page, results_per_page
     page  = current_page.to_i

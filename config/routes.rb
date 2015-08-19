@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
 	get 'get_podcasts' => 'podcasts#get_podcasts'
   get 'find_podcast' => 'podcasts#find_podcast'
+  get 'update_podcast' => 'podcasts#update_podcast'
   get 'meet_the_hosts' => 'users#meet_the_hosts'
 
   root :to => 'podcasts#welcome'
