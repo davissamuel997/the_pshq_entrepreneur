@@ -25,6 +25,12 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
       this.current_page = page_number
       this.getPodcasts()
 
+    findPodcast: ->
+    	if $stateParams["podcast_id"] && parseInt($stateParams["podcast_id"], 10) > 0
+    		PodcastsService.findPodcast.query({ podcast_id: $stateParams["podcast_id"] }, (responseData) ->
+    			debugger
+    		)
+
     getPodcasts: ->
       PodcastsService.getPodcasts.query({ page: this.current_page }, (responseData) ->
         if responseData.errors == false
@@ -55,7 +61,13 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 ################################################################
 ################# Index State ##################################
 
-  if currentState() == 'index'
+  if currentState() == 'index_podcasts'
     $scope.requestControl.getPodcasts()
+
+################################################################
+################# Show State ###################################
+
+  if currentState() == 'show_podcast'
+  	$scope.requestControl.findPodcast()
 
 ]

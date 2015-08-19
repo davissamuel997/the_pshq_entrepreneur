@@ -17,7 +17,7 @@
               Episode # -
             %span.entry-date {{podcast.air_date}}
           %h2.entry-title
-            %a{:href => '', :ref => 'bookmark'}
+            %a{:href => '/podcasts/{{podcast.podcast_id}}', :ref => 'bookmark'}
               {{podcast.name}}
               %i.fa.fa-youtube-play
 

@@ -18,9 +18,15 @@ ThePshqEntrepreneur.config(function($stateProvider, $urlRouterProvider, $locatio
 ///////////////////////////////////////////////////////////////////
 /////////////////////// Podcasts Routes ///////////////////////////
 
-    .state('index', {
+    .state('index_podcasts', {
       url: '/podcasts',
       templateUrl: '/assets/podcasts/index.html.haml',
+      controller: 'PodcastsController'
+    })
+
+    .state('show_podcast', {
+      url: '/podcasts/:podcast_id',
+      templateUrl: '/assets/podcasts/show.html.haml',
       controller: 'PodcastsController'
     })
 

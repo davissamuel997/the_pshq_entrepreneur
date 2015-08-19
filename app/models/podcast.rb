@@ -33,6 +33,14 @@ class Podcast < ActiveRecord::Base
   	data
   end
 
+  def self.find_podcast(options = {})
+    data = {:errors => false}
+
+    p 'hello world'
+
+    data
+  end
+
   # This paginates all of the data for the response of the js.
   def self.pagination_data element_count, current_page, results_per_page
     page  = current_page.to_i
