@@ -10,3 +10,7 @@
     max-height: 360px; 
     overflow-y: scroll;
 }
+
+.content-loop > .content-loop-custom {
+	width: 90%;
+}

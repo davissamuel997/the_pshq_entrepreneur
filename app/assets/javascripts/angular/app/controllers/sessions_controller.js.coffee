@@ -11,6 +11,9 @@ ThePshqEntrepreneur.controller 'SessionsController', ['$scope', '$http', '$locat
 
   $scope.requestControl = {
 
+    goToLogin: ->
+      window.location = '/users/sign_in'
+
     sign_out: ->
       SessionsService.signOut.query({}, (responseData) ->
         window.location = '/'
