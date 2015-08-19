@@ -1,5 +1,4 @@
 
-
 #primary.content-area
   / Featured Content / Start
   #featured-content.clearfix
@@ -222,38 +221,8 @@
   #carousel-1.carousel-loop.clearfix
     .container
       %h3.section-title Editor's Picks
-      .jcarousel
-        %ul
-          %li
-            %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-              .entry-meta
-                %span.entry-category
-                  %a{:href => "archive.html"} Category 1
-                %span.entry-date Jun. 19, 2014
-              %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Nulla Tristique Mi A Massa Convallis Cursus
-          %li
-            %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-              .entry-meta
-                %span.entry-category
-                  %a{:href => "archive.html"} Category 2
-                %span.entry-date Jun. 18, 2014
-              %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Etiam Suscipit Commodo Gravida cras Suscipit
-          %li
-            %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-              .entry-meta
-                %span.entry-category
-                  %a{:href => "archive.html"} Category 3
-                %span.entry-date Jun. 17, 2014
-              %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Ut Lacus Sapien Placerat A Ornare Nec Elementum
+      .jcarousel{"data-jcarousel" => "true"}
+        %ul{:style => "left: -220px; top: 0px;"}
           %li
             %article.hentry.post
               %a{:href => "single_post.html", :rel => "bookmark"}
@@ -284,10 +253,40 @@
                 %span.entry-date Jun. 14, 2014
               %h2.entry-title
                 %a{:href => "single_post.html", :rel => "bookmark"} In Pellentesque Lorem Condimentum Dui Morbi
+          %li
+            %article.hentry.post
+              %a{:href => "single_post.html", :rel => "bookmark"}
+                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
+              .entry-meta
+                %span.entry-category
+                  %a{:href => "archive.html"} Category 1
+                %span.entry-date Jun. 19, 2014
+              %h2.entry-title
+                %a{:href => "single_post.html", :rel => "bookmark"} Nulla Tristique Mi A Massa Convallis Cursus
+          %li
+            %article.hentry.post
+              %a{:href => "single_post.html", :rel => "bookmark"}
+                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
+              .entry-meta
+                %span.entry-category
+                  %a{:href => "archive.html"} Category 2
+                %span.entry-date Jun. 18, 2014
+              %h2.entry-title
+                %a{:href => "single_post.html", :rel => "bookmark"} Etiam Suscipit Commodo Gravida cras Suscipit
+          %li
+            %article.hentry.post
+              %a{:href => "single_post.html", :rel => "bookmark"}
+                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
+              .entry-meta
+                %span.entry-category
+                  %a{:href => "archive.html"} Category 3
+                %span.entry-date Jun. 17, 2014
+              %h2.entry-title
+                %a{:href => "single_post.html", :rel => "bookmark"} Ut Lacus Sapien Placerat A Ornare Nec Elementum
       / .jcarousel
-      %a.jcarousel-control-prev{:href => "#"}
+      %a.jcarousel-control-prev{"data-jcarouselcontrol" => "true", :href => "#"}
         %i.fa.fa-chevron-left
-      %a.jcarousel-control-next{:href => "#"}
+      %a.jcarousel-control-next{"data-jcarouselcontrol" => "true", :href => "#"}
         %i.fa.fa-chevron-right
     / .container
   / Carousel-1 / End

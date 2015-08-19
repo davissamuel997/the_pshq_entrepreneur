@@ -35,11 +35,11 @@
 
         .byline
           .input-group
-            %span.btn.input-group-addon.btn-sm.btn-success{"ng-click" => "audio.play()", :style => 'color: white;', 'ng-if' => 'audio.paused'} Play
-            %span.btn.input-group-addon.btn-sm.btn-success{"ng-click" => "audio.pause()", :style => 'color: white;', 'ng-if' => '!audio.paused'} Pause
-            %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.progress", :step => "0.01", :type => "range"}
-            %span.btn.btn-sm.input-group-addon {{audio.currentTime | trackTime}}
-            %span.btn.btn-sm.input-group-addon {{(audio.duration / 60.00).toFixed(2)}}
+            %span.btn.input-group-addon.btn-sm.btn-success{"ng-click" => "requestControl.audio.play()", :style => 'color: white;', 'ng-if' => 'requestControl.audio.paused'} Play
+            %span.btn.input-group-addon.btn-sm.btn-success{"ng-click" => "requestControl.audio.pause()", :style => 'color: white;', 'ng-if' => '!requestControl.audio.paused'} Pause
+            %input.form-control{:max => "1", :min => "0", "ng-model" => "requestControl.audio.progress", :step => "0.01", :type => "range"}
+            %span.btn.btn-sm.input-group-addon {{requestControl.audio.currentTime | trackTime}}
+            %span.btn.btn-sm.input-group-addon {{(requestControl.audio.duration / 60.00).toFixed(2)}}
 
         .entry-summary
           {{requestControl.podcast.description}}

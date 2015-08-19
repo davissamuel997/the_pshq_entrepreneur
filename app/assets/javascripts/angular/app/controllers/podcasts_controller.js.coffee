@@ -53,7 +53,7 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
     				$scope.requestControl.params.air_date = responseData.podcast.air_date
     				$scope.requestControl.params.description = responseData.podcast.description
 
-    				$scope.audio = ngAudio.load($scope.requestControl.podcast.recording)
+    				$scope.requestControl.audio = ngAudio.load($scope.requestControl.podcast.recording)
     		)
 
     getPodcasts: ->
@@ -63,12 +63,6 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
           $scope.requestControl.pagination = responseData.pagination
       )
 
-    getProgressBarWidth: ->
-      if $scope.audio && $scope.audio.progress
-        progress = $scope.audio.progress * 100
-
-        return progress + '%'
-
     updatePodcast: ->
     	if this.podcast && this.podcast.podcast_id && parseInt(this.podcast.podcast_id, 10) > 0
     	  PodcastsService.updatePodcast.query({ podcast_id: this.podcast.podcast_id, podcast_params: this.params }, (responseData) ->
@@ -77,6 +71,12 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
     	  )
 
   }
+
+  $scope.$on("$destroy", ->
+    if $scope.requestControl.audio
+    	$scope.requestControl.audio.pause()
+    	$scope.requestControl.audio = null
+  )
 
 ################################################################
 ################# Initialize ###################################

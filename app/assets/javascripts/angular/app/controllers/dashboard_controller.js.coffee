@@ -2,9 +2,34 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 
   init = ->
     console.log("inside the init")
+
+    setUpCarousel()
     
   currentState = ->
     $state.current.name
+
+  setUpCarousel = ->
+    # Carousel initialization
+    # $('.jcarousel').jcarousel wrap: 'circular'
+
+    # $('.jcarousel-control-prev').on('jcarouselcontrol:active', ->
+    #   $(this).removeClass 'inactive'
+    #   return
+    # ).on('jcarouselcontrol:inactive', ->
+    #   $(this).addClass 'inactive'
+    #   return
+    # ).jcarouselControl target: '-=1'
+
+    # $('.jcarousel-control-next').on('jcarouselcontrol:active', ->
+    #   $(this).removeClass 'inactive'
+    #   return
+    # ).on('jcarouselcontrol:inactive', ->
+    #   $(this).addClass 'inactive'
+    #   return
+    # ).jcarouselControl target: '+=1'
+    
+    return null
+
 
 ################################################################
 ################# Request Control ##############################
