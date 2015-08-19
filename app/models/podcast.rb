@@ -33,10 +33,24 @@ class Podcast < ActiveRecord::Base
   	data
   end
 
+  # Required - podcast_id
+  # On Success - returns podcast object
   def self.find_podcast(options = {})
     data = {:errors => false}
 
-    p 'hello world'
+    if options[:podcast_id].present? && options[:podcast_id].to_i > 0
+      podcast = Podcast.find(options[:podcast_id])
+
+      data[:podcast] = {
+        podcast_id:  podcast.id,
+        name:        podcast.name,
+        air_date:    podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y')  : nil,
+        description: podcast.description,
+        recording:   podcast.recording.present? && podcast.recording.url.present? && podcast.recording.url.size > 0 ? podcast.recording.url : nil
+      } 
+    else
+      data[:errors] = true
+    end
 
     data
   end
