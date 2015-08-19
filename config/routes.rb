@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "sessions" }
 
   resources :users
+  resources :podcasts
+  resources :posts
+  resources :comments
 
 	get 'get_podcasts' => 'podcasts#get_podcasts'
   get 'meet_the_hosts' => 'users#meet_the_hosts'
