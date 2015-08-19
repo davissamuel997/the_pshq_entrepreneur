@@ -5,47 +5,15 @@
       %h3.section-title You might also like...
       #carousel-2.jcarousel
         %ul
-          %li
+          %li{'ng-repeat' => 'podcast in requestControl.podcasts'}
             %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
+              %a{:href => '', :rel => 'bookmark'}
+                = image_tag "PSHQ-Entrepreneur-268-181.jpg", :class => 'entry-thumbnail'
               .entry-meta
-                %span.entry-date Jun. 29, 2014
+                %span.entry-date {{podcast.air_date}}
               %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Ipsum Hendrerit Sed Neque Sed Sapien Rutrum Laoreet
-          %li
-            %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-              .entry-meta
-                %span.entry-date Jun. 29, 2014
-              %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Elementum Sit Amet Felis Aecenas Pretium Lorem Hendrerit Eros
-          %li
-            %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-              .entry-meta
-                %span.entry-date Jun. 29, 2014
-              %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Congue Sed Ligula Nam Dolor Ligula Faucibus Id Sodales Auctor
-          %li
-            %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-              .entry-meta
-                %span.entry-date Jun. 29, 2014
-              %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Tempor Tellus Eget Fringilla Fusce Lacinia Tempor Malesuada Ut
-          %li
-            %article.hentry.post
-              %a{:href => "single_post.html", :rel => "bookmark"}
-                %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-              .entry-meta
-                %span.entry-date Jun. 29, 2014
-              %h2.entry-title
-                %a{:href => "single_post.html", :rel => "bookmark"} Pellentesque Pempor Tellus Eget Pellentesque Fusce Lacinia Tempor
-      / #carousel-2
+                %a{:href => '', :rel => 'bookmark'} {{podcast.name}}
+
       %a.jcarousel-control-prev{:href => "#"}
         %i.fa.fa-chevron-left
       %a.jcarousel-control-next{:href => "#"}

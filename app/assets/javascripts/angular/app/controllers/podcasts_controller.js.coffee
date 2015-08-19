@@ -94,6 +94,7 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
   if currentState() == 'show_podcast'
   	$scope.requestControl.findPodcast()
+  	$scope.requestControl.getPodcasts()
 
 ################################################################
 ################# Edit State ###################################
