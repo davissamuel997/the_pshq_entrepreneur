@@ -7,11 +7,6 @@ ThePshqEntrepreneur.controller 'SessionsController', ['$scope', '$http', '$locat
     $state.current.name
 
 ################################################################
-################# Params Check Control #########################
-
-
-
-################################################################
 ################# Request Control ##############################
 
   $scope.requestControl = {
@@ -44,6 +39,9 @@ ThePshqEntrepreneur.controller 'SessionsController', ['$scope', '$http', '$locat
 
     lastNameCheck: ->
       if this.params.last_name && this.params.last_name.length > 0 then 'has-success' else 'has-error'
+
+    goToLogin: ->
+      window.location = '/users/sign_in'
 
     login: ->
     	SessionsService.login.query({ email: '', password: '' }, (responseData) ->

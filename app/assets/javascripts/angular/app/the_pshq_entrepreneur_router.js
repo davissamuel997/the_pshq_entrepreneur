@@ -13,6 +13,26 @@ ThePshqEntrepreneur.config(function($stateProvider, $urlRouterProvider, $locatio
     	url: '/',
 		  templateUrl: "/assets/dashboard/dashboard.html.haml",
 		  controller: 'DashboardController'
+    })
+
+///////////////////////////////////////////////////////////////////
+/////////////////////// Session Routes ////////////////////////////
+
+    .state('current_user', {
+      url: '/current_user',
+      templateUrl: '/assets/sessions/current_user.html.haml',
+      controller: 'SessionsController'
+    })
+
+    .state('sign_in', {
+      url: '/users/sign_in',
+      controller: 'SessionsController'
+    })
+
+    .state('sign_out', {
+      url: '/users/sign_out',
+      templateUrl: '/assets/sessions/current_user.html.haml',
+      controller: 'SessionsController'
     });
 
   // Enable HTML5. Removes /# from url.

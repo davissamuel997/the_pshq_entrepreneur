@@ -183,9 +183,9 @@
                           %a{:href => "single_post.html", :rel => "bookmark"} Congue Sed Ligula Nam Dolor Ligula Faucibus Id Sodales
                     / .sf-mega-posts
                   / .sf-mega
-                %li.pull-right
+                %li.pull-right{'ng-controller' => 'SessionsController'}
                   - if !current_user
-                    %a{type: "button", 'data-toggle' => 'modal', href: "#send-recording"}
+                    %a{:href => '', 'ng-click' => 'requestControl.goToLogin()'}
                       Login
                       %i.fa.icon-lock
             / Secondary Navigation / End
@@ -193,7 +193,6 @@
 
         = yield
 
-    = render :partial => '/layouts/login_modal'
     = javascript_include_tag "modernizr-2.5.3.min"
     
     / jquery and friends
