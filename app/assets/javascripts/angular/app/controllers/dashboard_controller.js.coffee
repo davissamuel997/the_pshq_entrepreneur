@@ -51,3 +51,4 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 
     # $scope.audio = ngAudio.load("http://s3.amazonaws.com/pshq_entrepreneur_recordings/podcasts/recordings/000/000/024/original/episode-9.mp3?1439822613");
 ]
+

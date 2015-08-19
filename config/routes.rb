@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :users
 
 	get 'get_podcasts' => 'podcasts#get_podcasts'
+  get 'meet_the_hosts' => 'users#meet_the_hosts'
 
   root :to => 'podcasts#welcome'
 

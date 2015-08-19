@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'UsersController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'DashboardService', ($scope, $http, $location, $state, $stateParams, ngAudio, DashboardService) ->
+ThePshqEntrepreneur.controller 'UsersController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'UsersService', ($scope, $http, $location, $state, $stateParams, ngAudio, UsersService) ->
 
   init = ->
     console.log("inside the init")
@@ -18,4 +18,9 @@ ThePshqEntrepreneur.controller 'UsersController', ['$scope', '$http', '$location
 
   init()
 
+################################################################
+################# Meet the Hosts State #########################
+
+  if currentState() == 'meet_the_hosts'
+  	debugger
 ]

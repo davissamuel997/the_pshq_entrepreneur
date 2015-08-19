@@ -33,6 +33,15 @@ ThePshqEntrepreneur.config(function($stateProvider, $urlRouterProvider, $locatio
       url: '/users/sign_out',
       templateUrl: '/assets/sessions/current_user.html.haml',
       controller: 'SessionsController'
+    })
+
+///////////////////////////////////////////////////////////////////
+/////////////////////// Users Routes //////////////////////////////
+
+    .state('meet_the_hosts', {
+      url: '/meet_the_hosts',
+      templateUrl: '/assets/users/meet_the_hosts.html.haml',
+      controller: 'UsersController'
     });
 
   // Enable HTML5. Removes /# from url.
