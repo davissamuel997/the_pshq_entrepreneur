@@ -17,6 +17,8 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
     pagination: null
 
+    podcast: null
+
     podcasts: []
 
     selectedPodcast: null
@@ -28,7 +30,10 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
     findPodcast: ->
     	if $stateParams["podcast_id"] && parseInt($stateParams["podcast_id"], 10) > 0
     		PodcastsService.findPodcast.query({ podcast_id: $stateParams["podcast_id"] }, (responseData) ->
-    			debugger
+    			if responseData.errors == false
+    				$scope.requestControl.podcast = responseData.podcast
+
+    				$scope.audio = ngAudio.load($scope.requestControl.podcast.recording)
     		)
 
     getPodcasts: ->

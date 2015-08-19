@@ -56,41 +56,49 @@
     / More Content / Start
     #more-content
       %article.hentry.post
-        %h1.page-title Single Page Title
+        %h1.page-title {{requestControl.podcast.name}}
         .entry-content
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          %h1 H1 Header
-          %p Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque eget tempor tellus. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
-          %h2 H2 Header
-          %p Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tellus eget tempor. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
-          %h3 H3 Header
-          %p Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque tempor tellus eget pellentesque. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
-          %h4 H4 Header
-          %p Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor libero. Pellentesque pellentesque tempor tellus eget fringilla. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
-          %h5 H5 Header
-          %p Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
-          %h6 H6 Header
-          %p Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla. Pellentesque pellentesque tempor tellus eget libero. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
-          %h3 Blockquote
-          %p Maecenas dolor est, interdum a euismod eu, accumsan posuere nisl. Nam sed iaculis massa. Sed nisl lectus, tempor sed euismod quis, sollicitudin nec est. Suspendisse dignissim bibendum tempor. Nam erat felis, commodo sed semper commodo vel mauris suspendisse dignissim bibendum tempus.
-          %blockquote Mauris aliquet ultricies ante, non faucibus ante gravida sed. Sed ultrices pellentesque purus, vulputate volutpat ipsum hendrerit sed neque sed sapien rutrum laoreet justo ultrices. In pellentesque lorem condimentum dui morbi pulvinar dui non quam pretium ut lacinia tortor.
-          %p In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Cras suscipit, quam vitae adipiscing faucibus, risus nibh laoreet odio, a porttitor metus eros ut enim. Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium hendrerit fermentum.
-          %h3 Dropcap
-          %p
-            %span.dropcap D
-            onec varius condimentum augue, nec mollis risus egestas sit amet. Etiam elit est, tincidunt non tincidunt sit amet, mollis vitae orci. Suspendisse sit amet turpis quam. Sed varius magna nec felis faucibus blandit. Quisque at gravida ante. Phasellus sagittis aliquam sodales. Donec a tortor vitae dolor sagittis aliquam eu id lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus ac dapibus nisl. Proin in tellus non velit sagittis viverra vel sit amet dui. Cras augue ante, tincidunt consequat ultricies ultricies, tempor a elit. Vestibulum feugiat dapibus tempus. Integer suscipit ipsum sem fermentum bibendum. Vestibulum quam neque, pretium eu consectetur quis, iaculis et massa. Sed consectetur erat fermentum purus condimentum aliquam.
-          %h3 Lists
-          %ul
-            %li Unordered List lorem ipsum aperia
-            %li Unordered List lorem ipsum aperia
-            %li Unordered List lorem ipsum aperia
-            %li Unordered List lorem ipsum aperia
-          %ol
-            %li Ordered List lorem ipsum aperia
-            %li Ordered List lorem ipsum aperia
-            %li Ordered List lorem ipsum aperia
-            %li Ordered List lorem ipsum aperia
-        / .entry-content
+        
+          %h4 Here it is
+          %button.btn.btn-sm.btn-success{"ng-click" => "audio.paused ? audio.play() : audio.pause()"} Pause
+          %button{"ng-click" => "audio.restart()"} Stop
+          %button{"ng-click" => "audio.muting = !audio.muting"} Mute
+          %label Current Time {{audio.currentTime | trackTime}}
+          %input.form-control{"ng-model" => "audio.currentTime", :type => "text"}
+            %label Volume
+            %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.volume", :step => "0.01", :type => "range"}
+          .input-group
+            %span.input-group-addon Progress
+            %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.progress", :step => "0.01", :type => "range"}
+
+          .input-group
+            %span.input-group-addon Progress
+            #bar.progress.active
+              .progress-bar.progress-bar-success.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :role => "progressbar", 'ng-style' => "{'width': requestControl.getProgressBarWidth()}"}
+
+          {{requestControl.getProgressBarWidth()}}
+
+          %table.table.table-striped.table-bordered.table-condensed
+            %tr
+              %td
+                src
+              %td
+                {{audio.src}}
+            %tr
+              %td
+                Current Time
+              %td
+                {{audio.currentTime | number : 2}}
+            %tr
+              %td Duration
+              %td {{audio.duration | number : 2}}
+            %tr
+              %td Progress (%)
+              %td {{audio.progress | number : 1}}
+            %tr
+              %td Volume
+              %td {{audio.volume | number : 1}}
+
     / More Content / End
     #secondary.widget-area.widget-primary{:role => "complementary"}
       / Subscribe Widget / Start
