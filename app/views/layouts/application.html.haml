@@ -188,6 +188,9 @@
                     %a{:href => '', 'ng-click' => 'requestControl.goToLogin()'}
                       Login
                       %i.fa.icon-lock
+                  - else
+                    %a{:href => "", 'ng-controller' => 'SessionsController', :href => '', 'ng-click' => 'requestControl.sign_out()'}
+                      Sign Out
             / Secondary Navigation / End
         / Secondary Bar / End
 
