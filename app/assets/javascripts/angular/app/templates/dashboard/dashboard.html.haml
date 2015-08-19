@@ -1,23 +1,37 @@
 
 #primary.content-area
   / Featured Content / Start
+  / #featured-content.clearfix
+  /   .container
+  /     .col-md-8
+  /       .entry-thumbnail
+  /         = image_tag "PSHQ-Entrepreneur-Cover-710-400.jpg"
+  /     .col-md-4
+  /       .panel.panel-default
+  /         .panel-heading.panel-heading-custom{:style => "height: 40px;"}
+  /           %h3.panel-title
+  /             %em.fa.fa-music.fa-fw>
+  /             Recent Shows
+  /         .panel-body.body-scrollable
+  /           / START list group
+  /           .list-group
+  /             %a.list-group-item.make-black{'ng-repeat' => 'podcast in requestControl.podcasts', :href => '', 'ng-click' => 'requestControl.loadPodcast(podcast)'}
+  /               {{podcast.name}}
+  /               / %em.fa.fa-fw.fa-arrow-circle-right.mr
+
   #featured-content.clearfix
     .container
-      .col-md-8
-        .entry-thumbnail
-          = image_tag "PSHQ-Entrepreneur-Cover-710-400.jpg"
-      .col-md-4
-        .panel.panel-default
-          .panel-heading.panel-heading-custom{:style => "height: 40px;"}
-            %h3.panel-title
-              %em.fa.fa-music.fa-fw>
-              Recent Shows
-          .panel-body.body-scrollable
-            / START list group
-            .list-group
-              %a.list-group-item.make-black{'ng-repeat' => 'podcast in requestControl.podcasts', :href => '', 'ng-click' => 'requestControl.loadPodcast(podcast)'}
-                {{podcast.name}}
-                / %em.fa.fa-fw.fa-arrow-circle-right.mr
+      %h3.section-title Recent Shows...
+
+      %carousel{:interval => "myInterval", "no-wrap" => "true"}
+        %slide{:active => "podcast.active", "ng-repeat" => "podcast in requestControl.podcasts"}
+          %article.hentry.post
+            %a{:href => '/podcasts/{{podcast.podcast_id}}', :rel => 'bookmark'}
+              = image_tag "PSHQ-Entrepreneur-Cover-Show.jpg", :class => 'entry-thumbnail'
+            .entry-meta
+              %span.entry-date {{podcast.air_date}}
+            %h3.entry-title
+              %a{:href => '/podcasts/{{podcast.podcast_id}}', :rel => 'bookmark'} {{podcast.name}}
 
     / END list group
   .panel-footer.text-right
