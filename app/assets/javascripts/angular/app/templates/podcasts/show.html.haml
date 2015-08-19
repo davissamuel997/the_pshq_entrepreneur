@@ -56,50 +56,41 @@
     / More Content / Start
     #more-content
       %article.hentry.post
-        %h1.page-title {{requestControl.podcast.name}}
+        %h2.entry-title
+          %a{:href => "", :rel => "bookmark"} {{requestControl.podcast.name}}
+        .entry-meta
+          %span.entry-date {{requestControl.podcast.air_date}}
+        %a{:href => ""}
+          = image_tag "PSHQ-Entrepreneur-Cover-Show.jpg"
+        .byline
+          %span.entry-view 89 Listens
+
+        .byline
+          .input-group
+            %span.btn.input-group-addon.btn-sm.btn-success{"ng-click" => "audio.play()", :style => 'color: white;', 'ng-if' => 'audio.paused'} Play
+            %span.btn.input-group-addon.btn-sm.btn-success{"ng-click" => "audio.pause()", :style => 'color: white;', 'ng-if' => '!audio.paused'} Pause
+            %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.progress", :step => "0.01", :type => "range"}
+            %span.btn.btn-sm.input-group-addon {{audio.currentTime | trackTime}}
+            %span.btn.btn-sm.input-group-addon {{(audio.duration / 60.00).toFixed(2)}}
+
+        .entry-summary
+          {{requestControl.podcast.description}}
+
+        .entry-share-icons
+          %a{:href => "#", :title => "Twitter"}
+            %i.fa.fa-twitter
+          %a{:href => "#", :title => "Facebook"}
+            %i.fa.fa-facebook
+          %a{:href => "#", :title => "GooglePlus"}
+            %i.fa.fa-google-plus
+          %a{:href => "#", :title => "Pinterest"}
+            %i.fa.fa-pinterest
+          %a{:href => "#", :title => "LinkedIn"}
+            %i.fa.fa-linkedin
+
         %a.btn.btn-sm.btn-danger{:href => '/podcasts/{{requestControl.podcast.podcast_id}}/edit', :style => 'color: white;'} Edit Podcast
         .entry-content
         
-          %h4 Here it is
-          %button.btn.btn-sm.btn-success{"ng-click" => "audio.paused ? audio.play() : audio.pause()"} Pause
-          %button{"ng-click" => "audio.restart()"} Stop
-          %button{"ng-click" => "audio.muting = !audio.muting"} Mute
-          %label Current Time {{audio.currentTime | trackTime}}
-          %input.form-control{"ng-model" => "audio.currentTime", :type => "text"}
-            %label Volume
-            %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.volume", :step => "0.01", :type => "range"}
-          .input-group
-            %span.input-group-addon Progress
-            %input.form-control{:max => "1", :min => "0", "ng-model" => "audio.progress", :step => "0.01", :type => "range"}
-
-          .input-group
-            %span.input-group-addon Progress
-            #bar.progress.active
-              .progress-bar.progress-bar-success.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :role => "progressbar", 'ng-style' => "{'width': requestControl.getProgressBarWidth()}"}
-
-          {{requestControl.getProgressBarWidth()}}
-
-          %table.table.table-striped.table-bordered.table-condensed
-            %tr
-              %td
-                src
-              %td
-                {{audio.src}}
-            %tr
-              %td
-                Current Time
-              %td
-                {{audio.currentTime | number : 2}}
-            %tr
-              %td Duration
-              %td {{audio.duration | number : 2}}
-            %tr
-              %td Progress (%)
-              %td {{audio.progress | number : 1}}
-            %tr
-              %td Volume
-              %td {{audio.volume | number : 1}}
-
     / More Content / End
     #secondary.widget-area.widget-primary{:role => "complementary"}
       / Subscribe Widget / Start
