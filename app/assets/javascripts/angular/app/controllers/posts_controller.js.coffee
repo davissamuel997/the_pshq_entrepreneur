@@ -23,4 +23,10 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
   init()
 
+################################################################
+################# Index State ##################################
+
+  if currentState() == 'index_posts'
+    $scope.requestControl.getPosts()
+
 ]

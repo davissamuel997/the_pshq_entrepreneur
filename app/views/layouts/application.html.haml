@@ -121,36 +121,8 @@
                 %li
                   %a{:href => "/podcasts"} Podcasts
                 %li
-                  %a{:href => "archive.html"} Posts
-                  .sf-mega.cols-4
-                    .sf-mega-section
-                      %ul
-                        %li
-                          %a{:href => "archive.html"} Sub Category 2.1
-                        %li
-                          %a{:href => "archive.html"} Sub Category 2.2
-                        %li
-                          %a{:href => "archive.html"} Sub Category 2.3
-                        %li
-                          %a{:href => "archive.html"} Sub Category 2.4
-                    .sf-mega-posts
-                      .hentry.post
-                        %a{:href => "single_post.html", :rel => "bookmark"}
-                          %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-                        %h2.entry-title
-                          %a{:href => "single_post.html", :rel => "bookmark"} Vestibulum Quam Neque Pretium Eu Consectetur Quis
-                      .hentry.post
-                        %a{:href => "single_post.html", :rel => "bookmark"}
-                          %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-                        %h2.entry-title
-                          %a{:href => "single_post.html", :rel => "bookmark"} Ipsum Hendrerit Sed Neque Sed Sapien Rutrum Laoreet
-                      .hentry.post
-                        %a{:href => "single_post.html", :rel => "bookmark"}
-                          %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
-                        %h2.entry-title
-                          %a{:href => "single_post.html", :rel => "bookmark"} Congue Sed Ligula Nam Dolor Ligula Faucibus Id Sodales
-                    / .sf-mega-posts
-                  / .sf-mega
+                  %a{:href => "/posts"} Posts
+                  
                 %li.pull-right{'ng-controller' => 'SessionsController'}
                   - if !current_user
                     %a{:href => '', 'ng-click' => 'requestControl.goToLogin()'}
