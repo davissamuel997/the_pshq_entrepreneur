@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :authenticate_user!, only: []
+
   respond_to :json, :html
 
   def meet_the_hosts
-  	p 'hola world'
   end
 
   def user_params

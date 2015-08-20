@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'DashboardService', ($scope, $http, $location, $state, $stateParams, ngAudio, DashboardService) ->
+ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'PostsService', ($scope, $http, $location, $state, $stateParams, ngAudio, PostsService) ->
 
   init = ->
     console.log("inside the init")
@@ -10,6 +10,11 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 ################# Request Control ##############################
 
   $scope.requestControl = {
+
+  	getPosts: ->
+  		PostsService.getPosts.query({}, (responseData) ->
+  			debugger
+  		)
 
   }
 
