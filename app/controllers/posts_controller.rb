@@ -5,9 +5,7 @@ class PostsController < ApplicationController
   respond_to :json, :html
 
   def get_posts
-  	response = {:errors => false}
-
-  	p 'hello world'
+  	response = Post.get_posts(params)
 
   	respond_with response
   end
