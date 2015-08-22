@@ -22,7 +22,7 @@ class Podcast < ActiveRecord::Base
   	data[:podcasts] = podcasts.map { |podcast| {
   			podcast_id:  podcast.id,
   			name:        podcast.name,
-  			air_date:    podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y')  : nil,
+  			air_date:    podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y') : nil,
   			description: podcast.description,
   			recording:   podcast.recording.present? && podcast.recording.url.present? && podcast.recording.url.size > 0 ? podcast.recording.url : nil
   		} 
