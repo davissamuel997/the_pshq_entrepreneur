@@ -11,10 +11,13 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
   $scope.requestControl = {
 
-  	getPosts: ->
-  		PostsService.getPosts.query({}, (responseData) ->
-  			debugger
-  		)
+    posts: []
+
+    getPosts: ->
+      PostsService.getPosts.query({}, (responseData) ->
+        if responseData.errors == false
+          $scope.requestControl.posts = responseData.posts
+      )
 
   }
 
