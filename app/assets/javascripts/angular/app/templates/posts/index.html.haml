@@ -1,17 +1,17 @@
 #recent-content.container.clearfix
   %h3.section-title
-    Latest News
+    Latest Posts
     %span.see-all
       %a{:href => "archive.html"}
         See All
         %i.fa.fa-angle-right
   %article.hentry{'ng-repeat' => 'post in requestControl.posts'}
-    %a{:href => ''}
+    %a{:href => '/posts/{{post.post_id}}'}
       %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
     .entry-meta
       %span.entry-date {{post.post_date}}
     %h2.entry-title
-      %a{:href => '', :rel => 'bookmark'} {{post.name}}
+      %a{:href => '/posts/{{post.post_id}}', :rel => 'bookmark'} {{post.name}}
     .byline
       %span.entry-view 89 Views
       %span.entry-comment

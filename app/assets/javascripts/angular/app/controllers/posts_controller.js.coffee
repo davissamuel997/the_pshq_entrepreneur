@@ -13,6 +13,10 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
     posts: []
 
+    findPost: ->
+      if $state.params["post_id"] && parseInt($state.params["post_id"], 10) > 0
+        debugger
+
     getPosts: ->
       PostsService.getPosts.query({}, (responseData) ->
         if responseData.errors == false
@@ -31,5 +35,11 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
   if currentState() == 'index_posts'
     $scope.requestControl.getPosts()
+
+################################################################
+################# Show State ###################################
+
+  if currentState() == 'show_post'
+    $scope.requestControl.findPost()
 
 ]
