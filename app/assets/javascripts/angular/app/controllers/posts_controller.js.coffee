@@ -11,11 +11,15 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
   $scope.requestControl = {
 
+    post: null
+
     posts: []
 
     findPost: ->
       if $state.params["post_id"] && parseInt($state.params["post_id"], 10) > 0
-        debugger
+        PostsService.findPost.query({ post_id: $state.params["post_id"] }, (responseData) ->
+          debugger
+        )
 
     getPosts: ->
       PostsService.getPosts.query({}, (responseData) ->

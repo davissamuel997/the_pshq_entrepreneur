@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'meet_the_hosts' => 'users#meet_the_hosts'
 
   get 'get_posts' => 'posts#get_posts'
+  get 'find_post' => 'posts#find_post'
 
   root :to => 'podcasts#welcome'
 

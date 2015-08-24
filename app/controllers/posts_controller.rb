@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  skip_before_filter :authenticate_user!, only: [:get_posts]
+  skip_before_filter :authenticate_user!, only: [:get_posts, :find_post]
 
   respond_to :json, :html
 
@@ -8,6 +8,12 @@ class PostsController < ApplicationController
   	response = Post.get_posts(params)
 
   	respond_with response
+  end
+
+  def find_post
+    response = Post.find_post(params)
+
+    respond_with response
   end
 
   def post_params
