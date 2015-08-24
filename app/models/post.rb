@@ -15,10 +15,11 @@ class Post < ActiveRecord::Base
   			name:        post.name,
   			post_date:   post.post_date.present? ? post.post_date.strftime('%m/%d/%Y') : nil,
   			description: post.description,
+  			summary:     post.summary,
   			user:        post.user_id.present? && post.user_id.to_i > 0 ? User.find(post.user_id) : nil
   		}
   	}
-
+  	
     data[:pagination] = Podcast.pagination_data Post.all.count, page_num, per_page
 
   	data
@@ -39,6 +40,24 @@ class Post < ActiveRecord::Base
   			summary:     post.summary,
   			comments:    post.comments
   		}
+  	else
+  		data[:errors] = true
+  	end
+
+  	data
+  end
+
+  def self.update_post(options = {}, need_parse = false)
+  	data = {:errors => false}
+
+  	if options[:post_id].present? && options[:post_id].to_i > 0 && options[:post_params].present?
+  		post = Post.find(options[:post_id])
+
+      post_params = need_parse ? JSON.parse(options[:post_params]) : options[:post_params]
+
+      unless post.update(post_params)
+      	data[:errors] = true
+      end
   	else
   		data[:errors] = true
   	end

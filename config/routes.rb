@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   get 'get_posts' => 'posts#get_posts'
   get 'find_post' => 'posts#find_post'
+  get 'update_post' => 'posts#update_post'
 
   root :to => 'podcasts#welcome'
 

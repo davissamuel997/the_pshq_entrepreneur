@@ -4,4 +4,6 @@ ThePshqEntrepreneur.factory 'PostsService', ['$resource', '$http', '$q', ($resou
 
   getPosts: $resource "/get_posts.json", {}, query: { method: 'GET', isArray: false }
 
+  updatePost: $resource "/update_post.json", {}, query: { method: 'GET', isArray: false }
+
 ]
