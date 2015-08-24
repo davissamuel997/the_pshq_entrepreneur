@@ -37,9 +37,21 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
     $scope.requestControl.getPosts()
 
 ################################################################
+################# New State ####################################
+
+  if currentState() == 'new_post'
+    console.log("in the new")
+
+################################################################
 ################# Show State ###################################
 
   if currentState() == 'show_post'
+    $scope.requestControl.findPost()
+
+################################################################
+################# Edit State ###################################
+
+  if currentState() == 'edit_post'
     $scope.requestControl.findPost()
 
 ]

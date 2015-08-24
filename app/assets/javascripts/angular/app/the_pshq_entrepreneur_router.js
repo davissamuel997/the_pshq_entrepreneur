@@ -45,9 +45,21 @@ ThePshqEntrepreneur.config(function($stateProvider, $urlRouterProvider, $locatio
       controller: 'PostsController'
     })
 
+    .state('new_post', {
+      url: '/posts/new',
+      templateUrl: '/assets/posts/new.html.haml',
+      controller: 'PostsController'
+    })
+
     .state('show_post', {
       url: '/posts/:post_id',
       templateUrl: '/assets/posts/show.html.haml',
+      controller: 'PostsController'
+    })
+
+    .state('edit_post', {
+      url: '/posts/:post_id/edit',
+      templateUrl: '/assets/posts/edit.html.haml',
       controller: 'PostsController'
     })
 

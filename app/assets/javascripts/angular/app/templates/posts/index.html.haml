@@ -2,8 +2,8 @@
   %h3.section-title
     Latest Posts
     %span.see-all
-      %a{:href => "archive.html"}
-        See All
+      %a{:href => "/posts/new"}
+        New Post
         %i.fa.fa-angle-right
   %article.hentry{'ng-repeat' => 'post in requestControl.posts'}
     %a{:href => '/posts/{{post.post_id}}'}
