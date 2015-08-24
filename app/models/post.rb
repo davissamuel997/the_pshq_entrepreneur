@@ -36,6 +36,7 @@ class Post < ActiveRecord::Base
   			name:        post.name,
   			post_date:   post.post_date.present? ? post.post_date.strftime('%m/%d/%Y') : nil,
   			description: post.description,
+  			summary:     post.summary,
   			comments:    post.comments
   		}
   	else
