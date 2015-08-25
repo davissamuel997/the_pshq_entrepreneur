@@ -27,7 +27,10 @@ Rails.application.routes.draw do
 	get 'get_podcasts' => 'podcasts#get_podcasts'
   get 'find_podcast' => 'podcasts#find_podcast'
   get 'update_podcast' => 'podcasts#update_podcast'
+
   get 'meet_the_hosts' => 'users#meet_the_hosts'
+  get 'contact_pshq' => 'users#contact_pshq'
+  get 'about_pshq' => 'users#about_pshq'
 
   get 'get_posts' => 'posts#get_posts'
   get 'find_post' => 'posts#find_post'

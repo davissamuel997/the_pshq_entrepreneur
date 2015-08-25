@@ -23,4 +23,11 @@ ThePshqEntrepreneur.controller 'UsersController', ['$scope', '$http', '$location
 
   if currentState() == 'meet_the_hosts'
   	console.log("inside the hosts state")
+
+################################################################
+################# Contact PSHQ State ###########################
+
+  if currentState() == 'contact_pshq'
+  	console.log("inside the contact state")
+
 ]
