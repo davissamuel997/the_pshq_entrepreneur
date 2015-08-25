@@ -96,6 +96,12 @@ ThePshqEntrepreneur.config(function($stateProvider, $urlRouterProvider, $locatio
       url: '/contact_pshq',
       templateUrl: '/assets/users/contact_pshq.html.haml',
       controller: 'UsersController'
+    })
+
+    .state('about_pshq', {
+      url: '/about_pshq',
+      templateUrl: '/assets/users/about_pshq.html.haml',
+      controller: 'UsersController'
     });
 
   // Enable HTML5. Removes /# from url.
