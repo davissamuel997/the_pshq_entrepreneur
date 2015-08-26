@@ -3,6 +3,9 @@
     / More Content / Start
     #more-content
       %article.hentry.post
+        %a.btn.btn-sm.btn-danger{:href => '/posts/{{requestControl.post.post_id}}/edit', :style => 'color: white;'} Edit Post
+        .entry-content
+
         %h2.entry-title
           %a{:href => "", :rel => "bookmark"} {{requestControl.post.name}}
         .entry-meta
@@ -13,7 +16,7 @@
           %span.entry-view 89 Views
 
         .entry-summary
-          {{requestControl.post.description}}
+          %div.post-description{'ng-bind-html' => 'requestControl.post.description'}
 
         .entry-share-icons
           %a{:href => "#", :title => "Twitter"}
@@ -26,9 +29,6 @@
             %i.fa.fa-pinterest
           %a{:href => "#", :title => "LinkedIn"}
             %i.fa.fa-linkedin
-
-        %a.btn.btn-sm.btn-danger{:href => '/posts/{{requestControl.post.post_id}}/edit', :style => 'color: white;'} Edit Post
-        .entry-content
         
     / More Content / End
     #secondary.widget-area.widget-primary{:role => "complementary"}
