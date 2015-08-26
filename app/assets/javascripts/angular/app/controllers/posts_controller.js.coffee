@@ -80,7 +80,6 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
           if responseData.errors == false
             $scope.requestControl.post = responseData.post
             $scope.requestControl.currentUser = responseData.current_user
-            debugger
 
             $scope.requestControl.params.description = responseData.post.description
             $scope.requestControl.params.name = responseData.post.name
@@ -93,6 +92,12 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
         if responseData.errors == false
           $scope.requestControl.posts = responseData.posts
       )
+
+    postComment: ->
+      if this.post.post_id && parseInt(this.post.post_id, 10) > 0 && this.newComment && this.newComment.length > 0 && this.currentUser
+        PostsService.createComment.query({ post_id: this.post.post_id, comment_description: this.newComment }, (responseData) ->
+          debugger
+        )
 
     updatePost: ->
       if this.params && this.post.post_id && parseInt(this.post.post_id, 10) > 0

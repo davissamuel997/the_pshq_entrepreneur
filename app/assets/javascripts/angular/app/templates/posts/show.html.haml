@@ -33,20 +33,30 @@
       %article.hentry.post
         %h4{'ng-if' => '!requestControl.currentUser'} You must be logged in to post a comment.
         %h4{'ng-if' => 'requestControl.currentUser'} I'm Logged in
-        
-        .comment-des{:style => 'background-color: #f9f9f9;', 'ng-repeat' => 'comment in requestControl.post.comments'}
+
+        .comment.clearfix{'ng-repeat' => 'comment in requestControl.post.comments'}
+          %img.avatar{:alt => "", :src => "http://placehold.it/56x56"}
+          .comment-des{:style => 'background-color: #f9f9f9;'}
+            .arrow-comment
+            .comment-by
+              %p.author
+                %strong {{comment.user.full_name}}
+              %p.date {{comment.post_date}}
+              %span.reply
+                %a{:href => "#"} Reply
+            %p
+              {{comment.description}}
+
+        .comment-des{:style => 'background-color: #f9f9f9;'}
           .arrow-comment
-          .comment-by
-            %p.author
-              %strong {{comment.user.full_name}}
-            %p.date {{comment.post_date}}
-            %span.reply
-              %a{:href => "#"} Reply
-          %p
-            {{comment.description}}
-        .panel.panel-default
-          %textarea{'ng-model' => 'requestControl.newComment'}
-          %button.btn.btn-sm.btn-success Post Comment
+          %form
+            .control-group
+              %textarea.form-control{:placeholder => "Enter comment..", 'ng-model' => 'requestControl.newComment', :rows => 4}
+            %br
+            .form-actions
+              %p
+                / .btn-group.no-margin{style: "float: right;"}
+                %button.btn.btn-sm.btn-success{'ng-click' => 'requestControl.postComment()'} Post Comment
             
         
     / More Content / End
