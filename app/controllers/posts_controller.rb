@@ -8,11 +8,19 @@ class PostsController < ApplicationController
   def get_posts
   	response = Post.get_posts(params)
 
+    if current_user.present?
+      response["current_user"] = current_user
+    end
+
   	respond_with response
   end
 
   def find_post
     response = Post.find_post(params)
+
+    if current_user.present?
+      response["current_user"] = current_user
+    end
 
     respond_with response
   end

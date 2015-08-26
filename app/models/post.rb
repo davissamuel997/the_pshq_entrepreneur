@@ -38,7 +38,14 @@ class Post < ActiveRecord::Base
   			post_date:   post.post_date.present? ? post.post_date.strftime('%m/%d/%Y') : nil,
   			description: post.description,
   			summary:     post.summary,
-  			comments:    post.comments
+  			comments:    post.comments.order('created_at DESC').map{ |comment| {
+            comment_id:  comment.id,
+            user:        comment.user_id.present? && comment.user_id.to_i > 0 ? User.find(comment.user_id) : nil,
+            post_date:   comment.post_date.present? ? comment.post_date.strftime('%m/%d/%Y at %I:%M %p') : nil,
+            description: comment.description,
+            approved:    comment.approved
+          } 
+        }
   		}
   	else
   		data[:errors] = true

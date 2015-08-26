@@ -53,6 +53,10 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
   $scope.requestControl = {
 
+    currentUser: null
+
+    newComment: null
+
     params: {
 
       description: null
@@ -75,6 +79,8 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
         PostsService.findPost.query({ post_id: $state.params["post_id"] }, (responseData) ->
           if responseData.errors == false
             $scope.requestControl.post = responseData.post
+            $scope.requestControl.currentUser = responseData.current_user
+            debugger
 
             $scope.requestControl.params.description = responseData.post.description
             $scope.requestControl.params.name = responseData.post.name
