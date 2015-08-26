@@ -2,4 +2,6 @@ ThePshqEntrepreneur.factory 'DashboardService', ['$resource', '$http', '$q', ($r
 
   getPodcasts: $resource "/get_podcasts.json", {}, query: { method: 'GET', isArray: false }
 
+  getPosts: $resource "/get_posts.json", {}, query: { method: 'GET', isArray: false }
+
 ]
