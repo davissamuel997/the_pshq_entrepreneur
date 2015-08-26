@@ -2,7 +2,7 @@
   %h3.section-title
     Latest Posts
     %span.see-all
-      %a{:href => "/posts/new"}
+      %a{:href => "", 'ng-click' => 'requestControl.goToNew()'}
         New Post
         %i.fa.fa-angle-right
   %article.hentry{'ng-repeat' => 'post in requestControl.posts'}

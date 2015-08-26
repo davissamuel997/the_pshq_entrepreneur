@@ -25,6 +25,14 @@ class PostsController < ApplicationController
     respond_with response
   end
 
+  def create_post
+    params["user_id"] = current_user.id
+
+    response = Post.create_post(params, true)
+
+    respond_with response
+  end
+
   def update_post
     response = Post.update_post(params, true)
 

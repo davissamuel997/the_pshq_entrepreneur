@@ -1,1 +1,8 @@
-%h4 new post page
+
+.padding-md.clearfix
+  .panel.panel-default.table-responsive
+    .panel-heading
+      %h4 New Post
+
+.box-content
+  %ng-include{:src => "'/assets/posts/_form.html.haml'"}

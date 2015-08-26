@@ -16,7 +16,7 @@
                 .controls.form-group
                   %input.form-control.input-sm{'ng-model' => 'requestControl.params.name', :type => 'text', :placeholder => 'Enter..'}
 
-              .control-group
+              .control-group{'ng-if' => 'requestControl.post'}
                 %label.control-label Post Date
                 %p.input-group
                   %input.form-control.input-sm{"close-text" => "Close", "date-disabled" => "disabled(date, mode)", "datepicker-options" => "postDatepicker.dateOptions", "datepicker-popup" => "{{postDatepicker.format}}", "is-open" => "postDatepicker.opened", "min" => "postDatepicker.minDate", 'show-weeks' => 'false', "ng-model" => "requestControl.params.post_date", :type => "text", :placeholder => "Select a post date.."}/
@@ -38,5 +38,6 @@
               %p
                 .btn-group.no-margin{style: "float: right;"}
                   %button.btn.btn-sm.btn-default{"ng-click" => "requestControl.cancel()"} Cancel
-                  %button.btn.btn-sm.btn-success{"ng-click" => "requestControl.updatePost()"} Update Post
+                  %button.btn.btn-sm.btn-success{"ng-click" => "requestControl.updatePost()", 'ng-if' => 'requestControl.post'} Update Post
+                  %button.btn.btn-sm.btn-success{"ng-click" => "requestControl.createPost()", 'ng-if' => '!requestControl.post'} Create Post
 

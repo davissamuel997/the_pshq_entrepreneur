@@ -100,5 +100,34 @@ class Post < ActiveRecord::Base
 
     data
   end
+
+  def self.create_post(options = {}, need_parse = false)
+    data = {:errors => false}
+
+    if options[:post_params].present? && options[:user_id].present? && options[:user_id].to_i > 0
+      post_params = need_parse ? JSON.parse(options[:post_params]) : options[:post_params]
+      post_params["user_id"] = options[:user_id]
+      post_params["post_date"] = Time.now
+
+      post = Post.new(post_params)
+
+      if post.save
+        data[:post] = {
+          post_id:     post.id,
+          name:        post.name,
+          post_date:   post.post_date.present? ? post.post_date.strftime('%m/%d/%Y') : nil,
+          description: post.description,
+          summary:     post.summary,
+          user:        post.user_id.present? && post.user_id.to_i > 0 ? User.find(post.user_id) : nil
+        }
+      else
+        data[:errors] = true
+      end
+    else
+      data[:errors] = true
+    end
+
+    data
+  end
 	
 end

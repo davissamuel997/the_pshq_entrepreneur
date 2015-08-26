@@ -2,6 +2,8 @@ ThePshqEntrepreneur.factory 'PostsService', ['$resource', '$http', '$q', ($resou
 
   createComment: $resource "/create_post_comment.json", {}, query: { method: 'GET', isArray: false }
 
+  createPost: $resource "/create_post.json", {}, query: { method: 'GET', isArray: false }
+
   findPost: $resource "/find_post.json", {}, query: { method: 'GET', isArray: false }
 
   getPosts: $resource "/get_posts.json", {}, query: { method: 'GET', isArray: false }

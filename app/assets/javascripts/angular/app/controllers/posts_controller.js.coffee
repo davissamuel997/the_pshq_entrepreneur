@@ -74,6 +74,15 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
     posts: []
 
+    createPost: ->
+      if this.params
+        PostsService.createPost.query({ post_params: this.params }, (responseData) ->
+          if responseData.errors == false
+            $scope.requestControl.post = responseData.post
+
+            $location.path '/posts/' + $scope.requestControl.post.post_id
+        )
+
     findPost: ->
       if $state.params["post_id"] && parseInt($state.params["post_id"], 10) > 0
         PostsService.findPost.query({ post_id: $state.params["post_id"] }, (responseData) ->
@@ -81,6 +90,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
             $scope.requestControl.post = responseData.post
             $scope.requestControl.currentUser = responseData.current_user
 
+            $scope.requestControl.params.post_id = responseData.post.post_id
             $scope.requestControl.params.description = responseData.post.description
             $scope.requestControl.params.name = responseData.post.name
             $scope.requestControl.params.post_date = responseData.post.post_date
@@ -91,7 +101,15 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
       PostsService.getPosts.query({}, (responseData) ->
         if responseData.errors == false
           $scope.requestControl.posts = responseData.posts
+
+          $scope.requestControl.currentUser = responseData.current_user
       )
+
+    goToNew: ->
+      if this.currentUser && this.currentUser.id > 0
+        $location.path '/posts/new'
+      else
+        gritterAdd("You must be logged in to create a post.")
 
     postComment: ->
       if this.post.post_id && parseInt(this.post.post_id, 10) > 0 && this.newComment && this.newComment.length > 0 && this.currentUser
@@ -99,6 +117,14 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
           if responseData.errors == false
             $scope.requestControl.post.comments = responseData.comments
         )
+
+    reInitializePost: ->
+      this.params.description = null
+      this.params.name = null
+      this.params.post_date = null
+      this.params.summary = null
+
+      this.post = null
 
     updatePost: ->
       if this.params && this.post.post_id && parseInt(this.post.post_id, 10) > 0
@@ -118,13 +144,15 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 ################# Index State ##################################
 
   if currentState() == 'index_posts'
+    $scope.requestControl.reInitializePost()
+
     $scope.requestControl.getPosts()
 
 ################################################################
 ################# New State ####################################
 
   if currentState() == 'new_post'
-    console.log("in the new")
+    $scope.requestControl.reInitializePost()
 
 ################################################################
 ################# Show State ###################################

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'find_post' => 'posts#find_post'
   get 'update_post' => 'posts#update_post'
   get 'create_post_comment' => 'posts#create_post_comment'
+  get 'create_post' => 'posts#create_post'
 
   root :to => 'podcasts#welcome'
 
