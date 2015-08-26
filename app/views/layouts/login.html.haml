@@ -22,11 +22,12 @@
             = stylesheet_link_tag "theme/world-theme-include.css"
             = stylesheet_link_tag "theme2/theme2.css"
   %body
+    = yield
 
-    #page.hfeed.site.clearfix
+    / #page.hfeed.site.clearfix
 
-      %main#main.site-main{:role => "main"}
-        = yield
+    /   %main#main.site-main{:role => "main"}
+    /     = yield
 
     = javascript_include_tag "modernizr-2.5.3.min"
     
