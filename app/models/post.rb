@@ -80,7 +80,7 @@ class Post < ActiveRecord::Base
 
       # Will have to refactor to take into account "approved"
       comment = post.comments.new(user_id: options[:user_id], post_date: Time.now,
-                                 description: options[:comment_description], approved: true)
+                                  description: options[:comment_description], approved: true)
 
       if comment.save
         data[:comments] = post.comments.order('post_date ASC').map{ |comment| {

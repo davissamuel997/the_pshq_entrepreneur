@@ -46,7 +46,15 @@ class Podcast < ActiveRecord::Base
         name:        podcast.name,
         air_date:    podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y')  : nil,
         description: podcast.description,
-        recording:   podcast.recording.present? && podcast.recording.url.present? && podcast.recording.url.size > 0 ? podcast.recording.url : nil
+        recording:   podcast.recording.present? && podcast.recording.url.present? && podcast.recording.url.size > 0 ? podcast.recording.url : nil,
+        comments:    podcast.comments.order('post_date ASC').map{ |comment| {
+            comment_id:  comment.id,
+            user:        comment.user_id.present? && comment.user_id.to_i > 0 ? User.find(comment.user_id) : nil,
+            post_date:   comment.post_date.present? ? comment.post_date.strftime('%m/%d/%Y at %I:%M %p') : nil,
+            description: comment.description,
+            approved:    comment.approved
+          } 
+        }
       } 
     else
       data[:errors] = true
@@ -65,6 +73,35 @@ class Podcast < ActiveRecord::Base
       podcast_params = need_parse ? JSON.parse(options[:podcast_params]) : options[:podcast_params]
 
       unless podcast.update(podcast_params)
+        data[:errors] = true
+      end
+    else
+      data[:errors] = true
+    end
+
+    data
+  end
+
+  def self.create_podcast_comment(options = {})
+    data = {:errors => false}
+
+    if options[:podcast_id].present? && options[:podcast_id].to_i > 0 && options[:comment_description].present? && options[:comment_description].length > 0 && options[:user_id].present? && options[:user_id].to_i > 0
+      podcast = Podcast.find(options[:podcast_id])
+
+      # Will have to refactor to take into account "approved"
+      comment = podcast.comments.new(user_id: options[:user_id], post_date: Time.now,
+                                     description: options[:comment_description], approved: true)
+
+      if comment.save
+        data[:comments] = podcast.comments.order('post_date ASC').map{ |comment| {
+            comment_id:  comment.id,
+            user:        comment.user_id.present? && comment.user_id.to_i > 0 ? User.find(comment.user_id) : nil,
+            post_date:   comment.post_date.present? ? comment.post_date.strftime('%m/%d/%Y at %I:%M %p') : nil,
+            description: comment.description,
+            approved:    comment.approved
+          }  
+        }
+      else
         data[:errors] = true
       end
     else

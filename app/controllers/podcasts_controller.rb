@@ -13,17 +13,33 @@ class PodcastsController < ApplicationController
   def get_podcasts
   	response = Podcast.get_podcasts(params)
 
+    if current_user.present?
+      response["current_user"] = current_user
+    end
+
   	respond_with response
   end
 
   def find_podcast
     response = Podcast.find_podcast(params)
 
+    if current_user.present?
+      response["current_user"] = current_user
+    end
+
     respond_with response
   end
 
   def update_podcast
     response = Podcast.update_podcast(params, true)
+
+    respond_with response
+  end
+
+  def create_podcast_comment
+    params["user_id"] = current_user.id
+
+    response = Podcast.create_podcast_comment(params)
 
     respond_with response
   end
