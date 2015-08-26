@@ -90,7 +90,6 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
             $scope.requestControl.post = responseData.post
             $scope.requestControl.currentUser = responseData.current_user
 
-            $scope.requestControl.params.post_id = responseData.post.post_id
             $scope.requestControl.params.description = responseData.post.description
             $scope.requestControl.params.name = responseData.post.name
             $scope.requestControl.params.post_date = responseData.post.post_date
