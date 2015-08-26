@@ -96,7 +96,8 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
     postComment: ->
       if this.post.post_id && parseInt(this.post.post_id, 10) > 0 && this.newComment && this.newComment.length > 0 && this.currentUser
         PostsService.createComment.query({ post_id: this.post.post_id, comment_description: this.newComment }, (responseData) ->
-          debugger
+          if responseData.errors == false
+            $scope.requestControl.post.comments = responseData.comments
         )
 
     updatePost: ->
