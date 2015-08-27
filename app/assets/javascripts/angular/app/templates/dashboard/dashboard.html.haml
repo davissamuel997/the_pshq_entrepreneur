@@ -16,8 +16,30 @@
               %span.entry-date{:style => 'color: white;'} {{podcast.name}}
 
     / END list group
-  .panel-footer.text-right
-    %a.btn.btn-default.btn-sm{:href => "javascript:void(0);"} View All Activity
+  .panel-footer
+    .clearfix
+      %article.hentry.post.clearfix
+        .padding-md.clearfix
+          .panel.panel-default.table-responsive
+            .panel-heading
+              %h1.entry-title.text-center Are you the 2015 Entrepreneur?
+            
+        %a{:href => "single_post.html", :rel => "bookmark"}
+          = image_tag "jake_davis-100-100.jpg", :class => 'entry-thumbnail'
+        .byline
+          %span.entry-view.make-pshq-green Jake Davis
+
+        .entry-share-icons
+          %a{:href => "#", :title => "Twitter"}
+            %i.fa.fa-twitter
+          %a{:href => "#", :title => "Facebook"}
+            %i.fa.fa-facebook
+          %a{:href => "#", :title => "GooglePlus"}
+            %i.fa.fa-google-plus
+          %a{:href => "#", :title => "Pinterest"}
+            %i.fa.fa-pinterest
+          %a{:href => "#", :title => "LinkedIn"}
+            %i.fa.fa-linkedin
 
   .container
     / More Content / Start
