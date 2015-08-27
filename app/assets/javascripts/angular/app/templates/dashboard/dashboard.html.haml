@@ -87,17 +87,40 @@
     #secondary.widget-area.widget-primary{:role => "complementary"}
       / Subscribe Widget / Start
       .widget.subscribe-widget
-        %h3.widget-title Newsletter
-        %p Subscribe to our newsletter to receive breaking news by email.
-        %form{:role => "form"}
-          %input{:placeHolder => "mail@example.com", :type => "text"}
-            %button.btn{:type => "button"} Subscribe
-      / Subscribe Widget / End
-      / Ad Widget / Start
-      .widget.ad-widget
-        %h3.widget-title Advertisement
-        %a{:href => "http://www.theme-junkie.com/", :target => "_blank"}
-          %img{:alt => "Ad Widget", :src => ""}/
+        %h3.widget-title
+          = image_tag "PSHQ-logo-med.jpg"
+        %fieldset
+          %legend.section
+            %h3.text-center
+              %i.fa.fa-star
+              %strong Business Apps
+
+        %fieldset
+          %legend.section
+            %h5.text-center
+              = image_tag "PSHQCallTracker.com-side.jpg"
+              %strong Text Describing Product MT2W
+
+        %fieldset
+          %legend.section
+            %h5.text-center
+              = image_tag "PSHQCallTracker.com-side.jpg"
+              %strong Text Describing Product TMA
+
+        %fieldset
+          %legend.section
+            %h5.text-center
+              = image_tag "PSHQCallTracker.com-side.jpg"
+              %strong Text Describing Product CT
+
+        %fieldset
+          %legend.section
+            %h5.text-center
+              = image_tag "PSHQCallTracker.com-side.jpg"
+              %strong Text Describing Product COM
+
+        %h5 lead pages link promo
+
       / Ad Widget / End
       / Tabs Widget / Start
       .widget.tabs-widget
