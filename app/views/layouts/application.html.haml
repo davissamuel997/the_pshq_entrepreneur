@@ -74,14 +74,6 @@
                 %li
                   %a{:href => "/posts"} Posts
                   
-                %li.pull-right{'ng-controller' => 'SessionsController'}
-                  - if !current_user
-                    %a{:href => '', 'ng-click' => 'requestControl.goToLogin()'}
-                      Login
-                      %i.fa.icon-lock
-                  - else
-                    %a{:href => '', 'ng-click' => 'requestControl.sign_out()'}
-                      Sign Out
             / Secondary Navigation / End
         / Secondary Bar / End
 
@@ -90,7 +82,7 @@
         / Footer / Start
         %footer#footer.clearfix
           .container.clearfix
-            .footer-column.footer-column-1
+            .footer-column.footer-column-4
               .widget.posts-thumbnail-widget
                 %h3.widget-title Recent Posts
                 %ul
@@ -106,7 +98,7 @@
                     %a{:href => "#", :rel => "bookmark"}
                       %img.entry-thumbnail{:alt => "#", :src => "http://placehold.it/48x48"}/
                     %a{:href => "#", :rel => "bookmark"} Suspendisse Sit Amet Turpis Quam Sed Varius
-            .footer-column.footer-column-2
+            .footer-column.footer-column-4
               .widget.posts-thumbnail-widget
                 %h3.widget-title Popular Posts
                 %ul
@@ -122,22 +114,6 @@
                     %a{:href => "#", :rel => "bookmark"}
                       %img.entry-thumbnail{:alt => "#", :src => "http://placehold.it/48x48"}/
                     %a{:href => "#", :rel => "bookmark"} Sed Do Eiusmod Tempor Incididunt ut Labore et Dolore
-            .footer-column.footer-column-3
-              .widget.posts-thumbnail-widget
-                %h3.widget-title Ramdom Posts
-                %ul
-                  %li
-                    %a{:href => "#", :rel => "bookmark"}
-                      %img.entry-thumbnail{:alt => "#", :src => ""}/
-                    %a{:href => "#", :rel => "bookmark"} Vivamus Ac Dapibus Nisl Proin In Tellus Non Velit
-                  %li
-                    %a{:href => "#", :rel => "bookmark"}
-                      %img.entry-thumbnail{:alt => "#", :src => ""}/
-                    %a{:href => "#", :rel => "bookmark"} Cras Augue Ante Tincidunt Consequat Ultricies
-                  %li
-                    %a{:href => "#", :rel => "bookmark"}
-                      %img.entry-thumbnail{:alt => "#", :src => ""}/
-                    %a{:href => "#", :rel => "bookmark"} Vestibulum Quam Neque Pretium Eu Consectetur
             .footer-column.footer-column-4
               .widget.subscribe-widget
                 %h3.widget-title Newsletter
@@ -185,7 +161,7 @@
                 - if !current_user
                   Powered by
                   %a{:href => "", 'ng-click' => 'requestControl.goToLogin()'} ProblemSolutionHQ.com Application Framework
-                  
+
                 - else
                   %a{:href => '', 'ng-click' => 'requestControl.sign_out()'} Sign Out
 
