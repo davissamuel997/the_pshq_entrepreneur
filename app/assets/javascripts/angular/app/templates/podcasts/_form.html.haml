@@ -16,10 +16,19 @@
                 .controls.form-group
                   %input.form-control.input-sm{'ng-model' => 'requestControl.params.name', :type => 'text', :placeholder => 'Enter..'}
 
+                %label.control-label Episode Number
+                .controls.form-group
+                  %input.form-control.input-sm{'ng-model' => 'requestControl.params.episode_number', :type => 'number'}
+
               .control-group
                 %label.control-label Date Aired
                 .controls.form-group
                   %input.form-control.input-sm{'ng-model' => 'requestControl.params.air_date', :type => 'text', :placeholder => 'Enter..'}
+
+              .control-group
+                %label.control-label Summary
+                .controls.form-group
+                  %textarea.form-control.input-sm{'ng-model' => 'requestControl.params.summary', :type => 'text', :placeholder => 'Enter..', :rows => 7}
 
               .control-group
                 %label.control-label Description

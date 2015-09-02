@@ -41,12 +41,14 @@ class Podcast < ActiveRecord::Base
     podcasts = Podcast.all.page(page_num).per(per_page).order('created_at DESC')
 
   	data[:podcasts] = podcasts.map { |podcast| {
-  			podcast_id:  podcast.id,
-  			name:        podcast.name,
-  			air_date:    podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y') : nil,
-  			description: podcast.description,
-  			recording:   podcast.get_podcast_recording,
-        image:       podcast.get_podcast_image
+  			podcast_id:     podcast.id,
+  			name:           podcast.name,
+  			air_date:       podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y') : nil,
+  			description:    podcast.description,
+  			recording:      podcast.get_podcast_recording,
+        image:          podcast.get_podcast_image,
+        summary:        podcast.summary,
+        episode_number: podcast.episode_number
   		} 
   	}
 
@@ -64,18 +66,21 @@ class Podcast < ActiveRecord::Base
       podcast = Podcast.find(options[:podcast_id])
 
       data[:podcast] = {
-        podcast_id:  podcast.id,
-        name:        podcast.name,
-        air_date:    podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y')  : nil,
-        description: podcast.description,
-        recording:   podcast.recording.present? && podcast.recording.url.present? && podcast.recording.url.size > 0 ? podcast.recording.url : nil,
-        comments:    podcast.comments.order('post_date ASC').map{ |comment| {
+        podcast_id:     podcast.id,
+        name:           podcast.name,
+        air_date:       podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y')  : nil,
+        description:    podcast.description,
+        summary:        podcast.summary,
+        episode_number: podcast.episode_number,
+        recording:      podcast.get_podcast_recording,
+        image:          podcast.get_podcast_image,
+        comments:       podcast.comments.order('post_date ASC').map{ |comment| {
             comment_id:  comment.id,
             user:        comment.user_id.present? && comment.user_id.to_i > 0 ? User.find(comment.user_id) : nil,
             post_date:   comment.post_date.present? ? comment.post_date.strftime('%m/%d/%Y at %I:%M %p') : nil,
             description: comment.description,
             approved:    comment.approved
-          } 
+          }
         }
       } 
     else

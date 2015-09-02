@@ -27,7 +27,11 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
       description: null
 
+      episode_number: null
+
       name: null
+
+      summary: null
 
     }
 
@@ -57,6 +61,8 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
             $scope.requestControl.params.name = responseData.podcast.name
             $scope.requestControl.params.air_date = responseData.podcast.air_date
             $scope.requestControl.params.description = responseData.podcast.description
+            $scope.requestControl.params.summary = responseData.podcast.summary
+            $scope.requestControl.params.episode_number = responseData.podcast.episode_number
 
             $scope.requestControl.audio = ngAudio.load($scope.requestControl.podcast.recording)
         )

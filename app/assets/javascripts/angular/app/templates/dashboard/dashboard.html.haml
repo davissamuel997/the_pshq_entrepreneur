@@ -1,23 +1,38 @@
 
 #primary.content-area
   / Featured Content / Start
-  #featured-content.clearfix
+  #featured-content.clearfix.no-padding
     .container
-      %h3.section-title Recent Shows...
 
       %carousel{"no-wrap" => "noWrapSlides"}
         %slide{:active => "podcast.active", "ng-repeat" => "podcast in requestControl.podcasts"}
-          %article
-            %a{:href => '/podcasts/{{podcast.podcast_id}}', :rel => 'bookmark'}
-              %img{'ng-src' => "{{podcast.image}}", :style => "margin:auto;"}
-            .entry-meta
-              %span.entry-date {{podcast.air_date}}
-            .entry-meta
-              %span.entry-date{:style => 'color: white;'} {{podcast.name}}
-          / %img{"ng-src" => "{{podcast.image}}", :style => "margin:auto;"}
-          /   .carousel-caption
-          /     %h5 {{podcast.name}}
-          /     %p {{podcast.air_date}}
+
+          %ul
+            %li
+              %article.hentry.clearfix
+                %a{:href => '/podcasts/{{podcast.podcast_id}}', :rel => 'bookmark'}
+                  %img.entry-thumbnail{'ng-src' => "{{podcast.image}}", :style => "margin:auto;"}
+                .entry-meta
+                  %span.entry-date {{podcast.air_date}}
+                %p
+                  %h3.entry-title{:style => 'margin: 0; height: 25px;'}
+                    %span.entry-date{:style => 'color: white;'} Episode: {{podcast.episode_number}}
+                %p
+                  %h2.entry-title{:style => 'margin: 0;'}
+                    %span.entry-date{:style => 'color: white;'} {{podcast.name}}
+                .entry-summary
+                  {{podcast.summary}}
+                .entry-share-icons
+                  %a{:href => "#", :title => "Twitter"}
+                    %i.fa.fa-twitter
+                  %a{:href => "#", :title => "Facebook"}
+                    %i.fa.fa-facebook
+                  %a{:href => "#", :title => "GooglePlus"}
+                    %i.fa.fa-google-plus
+                  %a{:href => "#", :title => "Pinterest"}
+                    %i.fa.fa-pinterest
+                  %a{:href => "#", :title => "LinkedIn"}
+                    %i.fa.fa-linkedin
 
     / END list group
   .panel-footer
