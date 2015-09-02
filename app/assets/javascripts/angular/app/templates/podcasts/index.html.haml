@@ -14,7 +14,7 @@
             = image_tag "PSHQ-Entrepreneur-268-181.jpg", :class => 'entry-thumbnail'
           .entry-meta
             %span.entry-category
-              Episode # -
+              Episode {{podcast.episode_number}} -
             %span.entry-date {{podcast.air_date}}
           %h2.entry-title
             %a{:href => '/podcasts/{{podcast.podcast_id}}', :ref => 'bookmark'}
