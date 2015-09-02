@@ -5,15 +5,19 @@
     .container
       %h3.section-title Recent Shows...
 
-      %slick{:infinite => "true", "slides-to-scroll" => "3", "slides-to-show" => "3", :data => "requestControl.podcasts", "init-onload" => "true"}
-        %div{'ng-repeat' => "podcast in requestControl.podcasts"}
+      %carousel{"no-wrap" => "noWrapSlides"}
+        %slide{:active => "podcast.active", "ng-repeat" => "podcast in requestControl.podcasts"}
           %article
             %a{:href => '/podcasts/{{podcast.podcast_id}}', :rel => 'bookmark'}
-              = image_tag "PSHQ-Entrepreneur-268-181.jpg"
+              %img{'ng-src' => "{{podcast.image}}", :style => "margin:auto;"}
             .entry-meta
               %span.entry-date {{podcast.air_date}}
             .entry-meta
               %span.entry-date{:style => 'color: white;'} {{podcast.name}}
+          / %img{"ng-src" => "{{podcast.image}}", :style => "margin:auto;"}
+          /   .carousel-caption
+          /     %h5 {{podcast.name}}
+          /     %p {{podcast.air_date}}
 
     / END list group
   .panel-footer

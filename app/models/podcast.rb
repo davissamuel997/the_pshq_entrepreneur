@@ -1,6 +1,7 @@
 class Podcast < ActiveRecord::Base
 
   has_many :comments, as: :commentable
+  has_many :images, as: :imageable
 
   has_attached_file :recording, :storage => :s3, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
   validates_attachment_content_type :recording, :content_type => ['audio/mpeg']
@@ -9,6 +10,26 @@ class Podcast < ActiveRecord::Base
   	config = YAML.load_file(Rails.root+"config/application.yml")[Rails.env]
 
     {:bucket => config["RECORDING_BUCKET"], :access_key_id => config["AMAZON_ACCESS_KEY"], :secret_access_key => config["AMAZON_SECRET_KEY"]}
+  end
+
+  def get_podcast_image
+    if self.images.present? && self.images.count > 0 && self.images.first.attachment.present? && self.images.first.attachment.url.present?
+      image = self.images.first.attachment.url
+    else
+      image = "http://s3.amazonaws.com/pshq_entrepreneur_recordings/images/attachments/000/000/010/original/PSHQ-Entrepreneur-Cover-Show-small.jpg?1441206717" 
+    end
+
+    image
+  end
+
+  def get_podcast_recording
+    if self.recording.present? && self.recording.url.present? && self.recording.url.size > 0
+      recording = self.recording.url
+    else
+      recording = nil
+    end
+
+    recording
   end
 
   def self.get_podcasts(options = {})
@@ -24,7 +45,8 @@ class Podcast < ActiveRecord::Base
   			name:        podcast.name,
   			air_date:    podcast.air_date.present? ? podcast.air_date.strftime('%m/%d/%Y') : nil,
   			description: podcast.description,
-  			recording:   podcast.recording.present? && podcast.recording.url.present? && podcast.recording.url.size > 0 ? podcast.recording.url : nil
+  			recording:   podcast.get_podcast_recording,
+        image:       podcast.get_podcast_image
   		} 
   	}
 
