@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 
   has_many :comments, as: :commentable
+  has_many :images, as: :imageable
 
   def self.get_posts(options = {})
   	data = {:errors => false}

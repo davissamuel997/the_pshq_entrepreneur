@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
 	belongs_to :imageable, :polymorphic => true
 
   has_attached_file :attachment, :storage => :s3, :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
-  validates_attachment_content_type :attachment, :content_type => ['image/png', 'image/jpeg']
+  validates_attachment_content_type :attachment, :content_type => /\Aimage\/.*\Z/
 
   def s3_credentials
   	config = YAML.load_file(Rails.root+"config/application.yml")[Rails.env]
