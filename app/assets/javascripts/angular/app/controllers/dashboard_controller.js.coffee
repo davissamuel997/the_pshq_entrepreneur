@@ -2,8 +2,6 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
 
   init = ->
     console.log("inside the init")
-
-    setUpCarousel()
     
   currentState = ->
     $state.current.name
