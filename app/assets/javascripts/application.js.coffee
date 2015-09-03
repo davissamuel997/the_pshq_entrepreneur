@@ -1,3 +1,5 @@
+#= require ng-rails-csrf
+#= require angularjs/rails/resource
 #= require call_recording_player.js
 
 $ ->
