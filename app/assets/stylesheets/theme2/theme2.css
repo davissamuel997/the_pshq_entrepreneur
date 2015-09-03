@@ -8,9 +8,6 @@
 *= require theme2/jquery.steps.css
 */
 
-/*theme2/system.css*/
-/*theme2/core.css*/
-
 .chosen-container {
   /* This is the only width setting you'll need to change. */
   width: 100% !important;
