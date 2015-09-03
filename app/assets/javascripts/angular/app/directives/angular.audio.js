@@ -1,4 +1,7 @@
 'use strict';
+
+angular.module('ngAudio', []);
+
 angular.module('ngAudio', [])
 .directive('ngAudio', ['$compile', '$q', 'ngAudio', function($compile, $q, ngAudio) {
     return {
