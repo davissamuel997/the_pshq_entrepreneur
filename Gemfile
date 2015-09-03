@@ -53,5 +53,3 @@ gem 'devise_security_extension'
 gem 'devise_invitable'
 gem 'omniauth'
 gem 'devise-token_authenticatable'
-gem 'activerecord-session_store'
-
