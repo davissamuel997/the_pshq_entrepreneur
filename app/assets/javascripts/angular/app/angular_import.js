@@ -11,7 +11,6 @@
 *= require angular/vendor/ui-bootstrap.js
 *= require angular/vendor/ui-bootstrap-tpls.js
 
-
 *= require angular/app/plugins/chosen/chosen.jquery.js
 *= require angular/app/directives/chosen.js
 *= require angular/app/directives/angular.audio.js
