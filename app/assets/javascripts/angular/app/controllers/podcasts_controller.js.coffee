@@ -3,7 +3,7 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
   init = ->
     console.log("inside the init")
     
-  currentState = ->
+  $scope.currentState = ->
     $state.current.name
 
 ################################################################
@@ -63,8 +63,10 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
             $scope.requestControl.params.summary = responseData.podcast.summary
             $scope.requestControl.params.episode_number = responseData.podcast.episode_number
 
-            if responseData.podcast.description && responseData.podcast.description.length > 0
+            if responseData.podcast.description && responseData.podcast.description.length > 0 && $scope.currentState() == "show_podcast"
               $scope.requestControl.widgitDescription = $sce.trustAsHtml(responseData.podcast.description)
+            else
+              $scope.requestControl.widgitDescription = responseData.podcast.description
 
             $scope.requestControl.audio = ngAudio.load($scope.requestControl.podcast.recording)
         )
@@ -119,14 +121,14 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 ################################################################
 ################# Index State ##################################
 
-  if currentState() == 'index_podcasts'
+  if $scope.currentState() == 'index_podcasts'
     $scope.requestControl.reInitializePodcast()
     $scope.requestControl.getPodcasts()
 
 ################################################################
 ################# Show State ###################################
 
-  if currentState() == 'show_podcast'
+  if $scope.currentState() == 'show_podcast'
     $scope.requestControl.reInitializePodcast()
 
     $scope.requestControl.findPodcast()
@@ -135,7 +137,7 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 ################################################################
 ################# Edit State ###################################
 
-  if currentState() == 'edit_podcast'
+  if $scope.currentState() == 'edit_podcast'
     $scope.requestControl.reInitializePodcast()
 
     $scope.requestControl.findPodcast()
