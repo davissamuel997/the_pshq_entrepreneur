@@ -4,7 +4,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
     console.log("inside the Posts init")
     $scope.postDatepicker.toggleMin();
     
-  currentState = ->
+  $scope.currentState = ->
     $state.current.name
 
 ###########################################################
@@ -94,8 +94,10 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
             $scope.requestControl.params.post_date = responseData.post.post_date
             $scope.requestControl.params.summary = responseData.post.summary
 
-            if responseData.post.description && responseData.post.description.length > 0
+            if responseData.post.description && responseData.post.description.length > 0 && $scope.currentState() == "show_post"
               $scope.requestControl.widgitDescription = $sce.trustAsHtml(responseData.post.description)
+            else
+              $scope.requestControl.widgitDescription = responseData.post.description
         )
 
     getPosts: ->
@@ -144,7 +146,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 ################################################################
 ################# Index State ##################################
 
-  if currentState() == 'index_posts'
+  if $scope.currentState() == 'index_posts'
     $scope.requestControl.reInitializePost()
 
     $scope.requestControl.getPosts()
@@ -152,13 +154,13 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 ################################################################
 ################# New State ####################################
 
-  if currentState() == 'new_post'
+  if $scope.currentState() == 'new_post'
     $scope.requestControl.reInitializePost()
 
 ################################################################
 ################# Show State ###################################
 
-  if currentState() == 'show_post'
+  if $scope.currentState() == 'show_post'
     $scope.requestControl.reInitializePost()
 
     $scope.requestControl.findPost()
@@ -166,7 +168,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 ################################################################
 ################# Edit State ###################################
 
-  if currentState() == 'edit_post'
+  if $scope.currentState() == 'edit_post'
     $scope.requestControl.reInitializePost()
 
     $scope.requestControl.findPost()
