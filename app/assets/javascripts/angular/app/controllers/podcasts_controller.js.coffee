@@ -142,7 +142,6 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
     updatePodcast: ->
       if this.podcast && this.podcast.podcast_id && parseInt(this.podcast.podcast_id, 10) > 0
         PodcastsService.updatePodcast.query({ podcast_id: this.podcast.podcast_id, podcast_params: this.params, description: this.widgitDescription }, (responseData) ->
-          debugger
           if responseData.errors == false
             $location.path '/podcasts/' + $scope.requestControl.podcast.podcast_id
         )

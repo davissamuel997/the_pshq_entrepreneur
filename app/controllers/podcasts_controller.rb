@@ -33,29 +33,7 @@ class PodcastsController < ApplicationController
   def update_podcast
     response = Podcast.update_podcast(params, true)
 
-    respond_with response
-
-    # data = {:errors => false}
-
-    # if params[:podcast_id].present? && params[:podcast_id].to_i > 0 && params[:podcast_params].present?
-
-    #   podcast = Podcast.find(params[:podcast_id])
-
-    #   # podcast_params = need_parse ? JSON.parse(options[:podcast_params]) : options[:podcast_params]
-    #   podcast_params = params[:podcast_params]
-
-    #   if params[:description].present? && params[:description].size > 0
-    #     podcast_params["description"] = params[:description]
-    #   end
-
-    #   unless podcast.update!(podcast_params)
-    #     data[:errors] = true
-    #   end
-    # else
-    #   data[:errors] = true
-    # end
-
-    # respond_with data
+    render :json => response
   end
 
   def create_podcast_comment

@@ -20,11 +20,6 @@
                 .controls.form-group
                   %input.form-control.input-sm{'ng-model' => 'requestControl.params.episode_number', :type => 'number'}
 
-              / .control-group
-              /   %label.control-label Date Aired
-              /   .controls.form-group
-              /     %input.form-control.input-sm{'ng-model' => 'requestControl.params.air_date', :type => 'text', :placeholder => 'Enter..'}
-
               .control-group{'ng-if' => 'requestControl.podcast'}
                 %label.control-label Air Date
                 %p.input-group
