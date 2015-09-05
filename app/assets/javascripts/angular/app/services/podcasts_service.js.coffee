@@ -6,6 +6,6 @@ ThePshqEntrepreneur.factory 'PodcastsService', ['$resource', '$http', '$q', ($re
 
   getPodcasts: $resource "/get_podcasts.json", {}, query: { method: 'GET', isArray: false }
 
-  updatePodcast: $resource "/update_podcast.json", {}, query: { method: 'GET', isArray: false }
+  updatePodcast: $resource "/update_podcast.json", {}, query: { method: 'POST', isArray: false }
 
 ]
