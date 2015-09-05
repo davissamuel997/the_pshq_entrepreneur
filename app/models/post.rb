@@ -63,6 +63,10 @@ class Post < ActiveRecord::Base
 
       post_params = need_parse ? JSON.parse(options[:post_params]) : options[:post_params]
 
+      if options[:description].present? && options[:description].size > 0
+        post_params["description"] = options[:description]
+      end
+
       unless post.update(post_params)
       	data[:errors] = true
       end
@@ -109,6 +113,10 @@ class Post < ActiveRecord::Base
       post_params = need_parse ? JSON.parse(options[:post_params]) : options[:post_params]
       post_params["user_id"] = options[:user_id]
       post_params["post_date"] = Time.now
+
+      if options[:description].present? && options[:description].size > 0
+        post_params["description"] = options[:description]
+      end
 
       post = Post.new(post_params)
 

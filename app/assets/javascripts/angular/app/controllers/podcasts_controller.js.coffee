@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'PodcastsService', ($scope, $http, $location, $state, $stateParams, ngAudio, PodcastsService) ->
+ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'PodcastsService', '$sce', ($scope, $http, $location, $state, $stateParams, ngAudio, PodcastsService, $sce) ->
 
   init = ->
     console.log("inside the init")
@@ -60,9 +60,11 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
             $scope.requestControl.params.name = responseData.podcast.name
             $scope.requestControl.params.air_date = responseData.podcast.air_date
-            $scope.requestControl.widgitDescription = responseData.podcast.description
             $scope.requestControl.params.summary = responseData.podcast.summary
             $scope.requestControl.params.episode_number = responseData.podcast.episode_number
+
+            if responseData.podcast.description && responseData.podcast.description.length > 0
+              $scope.requestControl.widgitDescription = $sce.trustAsHtml(responseData.podcast.description)
 
             $scope.requestControl.audio = ngAudio.load($scope.requestControl.podcast.recording)
         )

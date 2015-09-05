@@ -15,9 +15,8 @@
         .byline
           %span.entry-view 89 Views
 
-        .entry-summary
-          %div.post-description{'ng-bind-html' => 'requestControl.post.description'}
-
+        .entry-summary{'ng-bind-html' => 'requestControl.widgitDescription'}
+        
         .entry-share-icons
           %a{:href => "#", :title => "Twitter"}
             %i.fa.fa-twitter

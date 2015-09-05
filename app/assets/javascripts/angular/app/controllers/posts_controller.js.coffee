@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'PostsService', ($scope, $http, $location, $state, $stateParams, ngAudio, PostsService) ->
+ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'PostsService', '$sce', ($scope, $http, $location, $state, $stateParams, ngAudio, PostsService ,$sce) ->
 
   init = ->
     console.log("inside the Posts init")
@@ -59,8 +59,6 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
     params: {
 
-      description: null
-
       name: null
 
       post_date: null
@@ -74,9 +72,11 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
     posts: []
 
+    widgitDescription: null
+
     createPost: ->
       if this.params
-        PostsService.createPost.query({ post_params: this.params }, (responseData) ->
+        PostsService.createPost.query({ post_params: this.params, description: this.widgitDescription }, (responseData) ->
           if responseData.errors == false
             $scope.requestControl.post = responseData.post
 
@@ -90,10 +90,12 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
             $scope.requestControl.post = responseData.post
             $scope.requestControl.currentUser = responseData.current_user
 
-            $scope.requestControl.params.description = responseData.post.description
             $scope.requestControl.params.name = responseData.post.name
             $scope.requestControl.params.post_date = responseData.post.post_date
             $scope.requestControl.params.summary = responseData.post.summary
+
+            if responseData.post.description && responseData.post.description.length > 0
+              $scope.requestControl.widgitDescription = $sce.trustAsHtml(responseData.post.description)
         )
 
     getPosts: ->
@@ -127,7 +129,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
     updatePost: ->
       if this.params && this.post.post_id && parseInt(this.post.post_id, 10) > 0
-        PostsService.updatePost.query({ post_params: this.params, post_id: this.post.post_id }, (responseData) ->
+        PostsService.updatePost.query({ post_params: this.params, post_id: this.post.post_id, description: this.widgitDescription }, (responseData) ->
           if responseData.errors == false
             $location.path '/posts/' + $scope.requestControl.post.post_id
         )
