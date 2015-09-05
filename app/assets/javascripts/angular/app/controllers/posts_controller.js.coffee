@@ -120,7 +120,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
         )
 
     reInitializePost: ->
-      this.params.description = null
+      this.widgitDescription = null
       this.params.name = null
       this.params.post_date = null
       this.params.summary = null
@@ -159,12 +159,16 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 ################# Show State ###################################
 
   if currentState() == 'show_post'
+    $scope.requestControl.reInitializePost()
+
     $scope.requestControl.findPost()
 
 ################################################################
 ################# Edit State ###################################
 
   if currentState() == 'edit_post'
+    $scope.requestControl.reInitializePost()
+
     $scope.requestControl.findPost()
 
 ]

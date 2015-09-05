@@ -83,6 +83,19 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
             $scope.requestControl.podcast.comments = responseData.comments
         )
 
+    reInitializePodcast: ->
+      this.params.air_date = null
+
+      this.params.episode_number = null
+
+      this.params.name = null
+
+      this.params.summary = null
+
+      this.widgitDescription = null
+
+      this.podcast = null
+
     updatePodcast: ->
       if this.podcast && this.podcast.podcast_id && parseInt(this.podcast.podcast_id, 10) > 0
         PodcastsService.updatePodcast.query({ podcast_id: this.podcast.podcast_id, podcast_params: this.params, description: this.widgitDescription }, (responseData) ->
@@ -107,19 +120,24 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 ################# Index State ##################################
 
   if currentState() == 'index_podcasts'
+    $scope.requestControl.reInitializePodcast()
     $scope.requestControl.getPodcasts()
 
 ################################################################
 ################# Show State ###################################
 
   if currentState() == 'show_podcast'
-  	$scope.requestControl.findPodcast()
-  	$scope.requestControl.getPodcasts()
+    $scope.requestControl.reInitializePodcast()
+
+    $scope.requestControl.findPodcast()
+    $scope.requestControl.getPodcasts()
 
 ################################################################
 ################# Edit State ###################################
 
   if currentState() == 'edit_podcast'
-  	$scope.requestControl.findPodcast()
+    $scope.requestControl.reInitializePodcast()
+
+    $scope.requestControl.findPodcast()
 
 ]
