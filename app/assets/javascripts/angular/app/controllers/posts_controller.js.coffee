@@ -2,7 +2,6 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
   init = ->
     console.log("inside the Posts init")
-    $scope.postDatepicker.toggleMin();
     
   $scope.currentState = ->
     $state.current.name

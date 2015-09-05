@@ -20,10 +20,18 @@
                 .controls.form-group
                   %input.form-control.input-sm{'ng-model' => 'requestControl.params.episode_number', :type => 'number'}
 
-              .control-group
-                %label.control-label Date Aired
-                .controls.form-group
-                  %input.form-control.input-sm{'ng-model' => 'requestControl.params.air_date', :type => 'text', :placeholder => 'Enter..'}
+              / .control-group
+              /   %label.control-label Date Aired
+              /   .controls.form-group
+              /     %input.form-control.input-sm{'ng-model' => 'requestControl.params.air_date', :type => 'text', :placeholder => 'Enter..'}
+
+              .control-group{'ng-if' => 'requestControl.podcast'}
+                %label.control-label Air Date
+                %p.input-group
+                  %input.form-control.input-sm{"close-text" => "Close", "date-disabled" => "disabled(date, mode)", "datepicker-options" => "podcastDatepicker.dateOptions", "datepicker-popup" => "{{podcastDatepicker.format}}", "is-open" => "podcastDatepicker.opened", "min" => "podcastDatepicker.minDate", 'show-weeks' => 'false', "ng-model" => "requestControl.params.air_date", :type => "text", :placeholder => "Select an air date.."}/
+                  %span.input-group-sm.input-group-btn
+                    %button.btn.btn-default{"ng-click" => "podcastDatepicker.open($event)", :type => "button"}
+                      %i.glyphicon.glyphicon-calendar
 
               .control-group
                 %label.control-label Summary

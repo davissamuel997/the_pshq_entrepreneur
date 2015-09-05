@@ -6,6 +6,47 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
   $scope.currentState = ->
     $state.current.name
 
+###########################################################
+################# Datepickers #############################
+
+  $scope.podcastDatepicker = {
+
+    dateOptions: {
+      formatYear: 'yy',
+      startingDay: 1,
+      showWeeks: false
+    };
+
+    format: 'dd-MMMM-yyyy';
+
+    minDate: new Date()
+
+    opened: false
+
+    clear: ->
+      $scope.requestControl.params.air_date = null
+    
+    # Disable weekend selection
+    disabled: (date, mode) ->
+      return ( mode == 'day' && ( date.getDay() == 0 || date.getDay() == 6 ) );
+
+    open: ($event) ->
+      $event.preventDefault();
+      $event.stopPropagation();
+
+      if $scope.requestControl.params.air_date == null
+        this.today()
+
+      $scope.podcastDatepicker.opened = true;
+
+    today: ->
+      $scope.requestControl.params.air_date = new Date();
+
+    toggleMin: ->
+      $scope.minDate = $scope.minDate ? null : new Date();
+
+  }
+
 ################################################################
 ################# Request Control ##############################
 
