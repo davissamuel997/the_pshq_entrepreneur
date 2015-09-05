@@ -30,13 +30,8 @@
                 .controls.form-group
                   %textarea.form-control.input-sm{'ng-model' => 'requestControl.params.summary', :type => 'text', :placeholder => 'Enter..', :rows => 7}
 
-              / .control-group
-              /   %label.control-label Description
-              /   .controls.form-group
-              /     %textarea.form-control.input-sm{'ng-model' => 'requestControl.params.description', :type => 'text', :placeholder => 'Enter..', :rows => 15}
-
               .control-group
-                %label.control-label Description 2
+                %label.control-label Description
                 .controls.form-group
                   %wysiwyg{"enable-bootstrap-title" => "true", "ng-model" => "requestControl.widgitDescription", "textarea-class" => "form-control", "textarea-height" => "250px", "textarea-id" => "question", "textarea-name" => "textareaQuestion", "textarea-required" => ""}
 
