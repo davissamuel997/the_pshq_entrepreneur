@@ -55,20 +55,19 @@ class Post < ActiveRecord::Base
   	data
   end
 
-  def self.update_post(options = {}, need_parse = false)
+  def self.update_post(options = {})
   	data = {:errors => false}
 
   	if options[:post_id].present? && options[:post_id].to_i > 0 && options[:post_params].present?
   		post = Post.find(options[:post_id])
 
-      post_params = need_parse ? JSON.parse(options[:post_params]) : options[:post_params]
+      post_params = options[:post_params]
 
-      if options[:description].present? && options[:description].size > 0
-        post_params["description"] = options[:description]
-      end
+      unless post.update(description: options[:description], user_id: options[:user_id],
+                         post_date:   Time.now, name: post_params["name"],
+                         summary:     post_params["summary"], post_date: post_params["post_date"])
 
-      unless post.update(post_params)
-      	data[:errors] = true
+        data[:errors] = true
       end
   	else
   		data[:errors] = true
@@ -106,19 +105,15 @@ class Post < ActiveRecord::Base
     data
   end
 
-  def self.create_post(options = {}, need_parse = false)
+  def self.create_post(options = {})
     data = {:errors => false}
 
     if options[:post_params].present? && options[:user_id].present? && options[:user_id].to_i > 0
-      post_params = need_parse ? JSON.parse(options[:post_params]) : options[:post_params]
-      post_params["user_id"] = options[:user_id]
-      post_params["post_date"] = Time.now
+      post_params = options[:post_params]
 
-      if options[:description].present? && options[:description].size > 0
-        post_params["description"] = options[:description]
-      end
-
-      post = Post.new(post_params)
+      post = Post.new(description: options[:description], user_id: options[:user_id],
+                      post_date:   Time.now, name: post_params["name"],
+                      summary:     post_params["summary"])
 
       if post.save
         data[:post] = {
