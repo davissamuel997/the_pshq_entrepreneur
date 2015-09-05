@@ -25,8 +25,6 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
       air_date: null
 
-      description: null
-
       episode_number: null
 
       name: null
@@ -40,6 +38,8 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
     podcasts: []
 
     selectedPodcast: null
+
+    widgitDescription: null
 
     cancel: ->
       if this.podcast && this.podcast.podcast_id && parseInt(this.podcast.podcast_id, 10) > 0
@@ -60,7 +60,7 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
             $scope.requestControl.params.name = responseData.podcast.name
             $scope.requestControl.params.air_date = responseData.podcast.air_date
-            $scope.requestControl.params.description = responseData.podcast.description
+            $scope.requestControl.widgitDescription = responseData.podcast.description
             $scope.requestControl.params.summary = responseData.podcast.summary
             $scope.requestControl.params.episode_number = responseData.podcast.episode_number
 
@@ -83,7 +83,7 @@ ThePshqEntrepreneur.controller 'PodcastsController', ['$scope', '$http', '$locat
 
     updatePodcast: ->
       if this.podcast && this.podcast.podcast_id && parseInt(this.podcast.podcast_id, 10) > 0
-        PodcastsService.updatePodcast.query({ podcast_id: this.podcast.podcast_id, podcast_params: this.params }, (responseData) ->
+        PodcastsService.updatePodcast.query({ podcast_id: this.podcast.podcast_id, podcast_params: this.params, description: this.widgitDescription }, (responseData) ->
           if responseData.errors == false
             $location.path '/podcasts/' + $scope.requestControl.podcast.podcast_id
         )

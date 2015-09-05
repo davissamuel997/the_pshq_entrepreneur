@@ -104,6 +104,10 @@ class Podcast < ActiveRecord::Base
 
       podcast_params = need_parse ? JSON.parse(options[:podcast_params]) : options[:podcast_params]
 
+      if options[:description].present? && options[:description].size > 0
+        podcast_params["description"] = options[:description]
+      end
+
       unless podcast.update(podcast_params)
         data[:errors] = true
       end

@@ -44,8 +44,7 @@
             %span.btn.btn-sm.input-group-addon {{requestControl.audio.currentTime | trackTime}}
             %span.btn.btn-sm.input-group-addon {{(requestControl.audio.duration / 60.00).toFixed(2)}}
 
-        .entry-summary
-          {{requestControl.podcast.description}}
+        .entry-summary{'ng-bind-html' => 'requestControl.widgitDescription'}
 
         .entry-share-icons
           %a{:href => "#", :title => "Twitter"}
