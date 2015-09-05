@@ -16,6 +16,9 @@
 *= require angular/app/directives/chosen.js
 *= require angular/app/directives/angular.audio.js
 
+*= require angular/app/plugins/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js
+*= require angular/app/plugins/angular-wysiwyg/dist/angular-wysiwyg.js
+
 *= require angular/app/the_pshq_entrepreneur_module.js
 *= require angular/app/the_pshq_entrepreneur_router.js
 *= require_tree ./services
