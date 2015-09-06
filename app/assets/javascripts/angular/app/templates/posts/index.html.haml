@@ -5,10 +5,13 @@
       %a{:href => "", 'ng-click' => 'requestControl.goToNew()'}
         New Post
         %i.fa.fa-angle-right
+
   %article.hentry{'ng-repeat' => 'post in requestControl.posts'}
     %a{:href => '/posts/{{post.post_id}}'}
-      %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
+      %img.entry-thumbnail{:alt => "Post Title", :src => "http://placehold.it/340x190"}/
     .entry-meta
+      %span.entry-category
+        %a{:href => "archive.html"} Category 1
       %span.entry-date {{post.post_date}}
     %h2.entry-title
       %a{:href => '/posts/{{post.post_id}}', :rel => 'bookmark'} {{post.name}}

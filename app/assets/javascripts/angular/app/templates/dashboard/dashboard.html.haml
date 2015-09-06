@@ -71,9 +71,9 @@
             %i.fa.fa-angle-right
       %ul
         %li.clearfix{'ng-repeat' => 'post in requestControl.posts'}
-          %article.hentry.post.clearfix
-            %a{:href => '/posts/{{post.post_id}}'}
-              %img.entry-thumbnail{:alt => "Post Title", :src => ""}/
+          %article#post-1.hentry.post.clearfix
+            %a{:href => "single_post.html"}
+              %img.entry-thumbnail{:alt => "Post Title", :src => "http://placehold.it/200x200"}/
             .entry-meta
               %span.entry-category
                 %a{:href => "archive.html"} Category 1
@@ -81,7 +81,7 @@
             %h2.entry-title
               %a{:href => '/posts/{{post.post_id}}', :rel => 'bookmark'} {{post.name}}
             .byline
-              %span.entry-view 89 Views
+              %span.entry-view 123 Views
               %span.entry-comment
                 %a{:href => "single_post.html#comments"} 14
               %span.entry-author
