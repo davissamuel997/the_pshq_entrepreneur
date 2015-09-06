@@ -3,23 +3,48 @@
   .content-loop
     %h3.section-title
       The Podcasts
-      %span.see-all
-        %a{:href => "archive.html"}
-          See All
-          %i.fa.fa-angle-right
+
     %ul
       %li.clearfix{'ng-repeat' => 'podcast in requestControl.podcasts'}
-        %article.hentry.post.clearfix
-          %a{:href => "", :rel => "bookmark"}
-            = image_tag "PSHQ-Entrepreneur-268-181.jpg", :class => 'entry-thumbnail'
+        / %article.hentry.post.clearfix
+        /   %a{:href => "", :rel => "bookmark"}
+        /     = image_tag "PSHQ-Entrepreneur-268-181.jpg", :class => 'entry-thumbnail'
+        /   .entry-meta
+        /     %span.entry-category
+        /       Episode {{podcast.episode_number}} -
+        /     %span.entry-date {{podcast.air_date}}
+        /   %h2.entry-title
+        /     %a{:href => '/podcasts/{{podcast.podcast_id}}', :ref => 'bookmark'}
+        /       {{podcast.name}}
+        /       %i.fa.fa-youtube-play
+
+        %article#post-1.hentry.post.clearfix
+          %a{:href => "single_post.html"}
+            %img.entry-thumbnail{:alt => "Post Title", :src => "http://placehold.it/200x200"}/
           .entry-meta
             %span.entry-category
-              Episode {{podcast.episode_number}} -
+              %a Episode {{podcast.episode_number}} -
             %span.entry-date {{podcast.air_date}}
           %h2.entry-title
-            %a{:href => '/podcasts/{{podcast.podcast_id}}', :ref => 'bookmark'}
-              {{podcast.name}}
-              %i.fa.fa-youtube-play
+            %a{:href => '/podcasts/{{podcast.podcast_id}}', :ref => 'bookmark'} {{podcast.name}}
+          .byline
+            %span.entry-view 123 Views
+            %span.entry-author
+              by
+              %a{:href => ""} John Doe
+          .entry-summary
+            {{podcast.summary}}
+          .entry-share-icons
+            %a{:href => "#", :title => "Twitter"}
+              %i.fa.fa-twitter
+            %a{:href => "#", :title => "Facebook"}
+              %i.fa.fa-facebook
+            %a{:href => "#", :title => "GooglePlus"}
+              %i.fa.fa-google-plus
+            %a{:href => "#", :title => "Pinterest"}
+              %i.fa.fa-pinterest
+            %a{:href => "#", :title => "LinkedIn"}
+              %i.fa.fa-linkedin
 
     .span
       .pull-right
