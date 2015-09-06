@@ -1,14 +1,33 @@
 .container
   / More Content / Start
-  #more-content.one-column
+  #more-content
     %article.hentry.post
-      %h1.page-title Contact Us
+      %h1.page-title Contact
       .entry-content
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        %blockquote Mauris aliquet ultricies ante, non faucibus ante gravida sed. Sed ultrices pellentesque purus, vulputate volutpat ipsum hendrerit sed neque sed sapien rutrum laoreet justo ultrices. In pellentesque lorem condimentum dui morbi pulvinar dui non quam pretium ut lacinia tortor.
-        %p In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Cras suscipit, quam vitae adipiscing faucibus, risus nibh laoreet odio, a porttitor metus eros ut enim. Morbi augue velit, tempus mattis dignissim nec, porta sed risus. Donec eget magna eu lorem tristique pellentesque eget eu dui. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium hendrerit fermentum.
-
-
+        %p Maecenas dolor est, interdum a euismod eu, accumsan posuere nisl. Nam sed iaculis massa. Sed nisl lectus, tempor sed euismod quis, sollicitudin nec est. Suspendisse dignissim bibendum tempor. Nam erat felis, commodo sed semper commodo vel mauris suspendisse dignissim bibendum tempus.
+        %form#contact-form
+          %p
+            %label{:for => "contact-name"}
+              Your Name
+              %span.required *
+            %input#contact-name{:type => "text"}/
+          %p
+            %label{:for => "contact-email"}
+              Your Email
+              %span.required *
+            %input#contact-email{:type => "email"}/
+          %p
+            %label{:for => "contact-subject"} Email Subject
+            %input#contact-subject{:type => "text"}/
+          %p
+            %label{:for => "contact-content"}
+              Your Message
+              %span.required *
+            %textarea#contact-content{:cols => "40", :rows => "10"}
+          %p
+            %button.btn Send Email
+          %p
+            %span.required *
+            fields are marked as required.
       / .entry-content
   / More Content / End
-  .clearfix
