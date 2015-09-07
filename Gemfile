@@ -48,6 +48,8 @@ gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem 'responders', '~> 2.0'
 
+gem 'angularjs-file-upload-rails', '~> 1.1.6'
+
 gem 'devise'
 gem 'devise_security_extension'
 gem 'devise_invitable'

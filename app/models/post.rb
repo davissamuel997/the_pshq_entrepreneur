@@ -115,7 +115,10 @@ class Post < ActiveRecord::Base
                       post_date:   Time.now, name: post_params["name"],
                       summary:     post_params["summary"])
 
-      if options[:post_image].present?
+      p options[:post_image]
+      p 'check it out here'
+
+      if options[:post_image].present? && File.file?(options[:post_image])
         p 'hello world'
       end
 

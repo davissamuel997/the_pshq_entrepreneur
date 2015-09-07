@@ -1,4 +1,4 @@
-ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'PostsService', '$sce', ($scope, $http, $location, $state, $stateParams, ngAudio, PostsService ,$sce) ->
+ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location', '$state', '$stateParams', 'ngAudio', 'PostsService', '$sce', 'FileUploader', ($scope, $http, $location, $state, $stateParams, ngAudio, PostsService ,$sce, FileUploader) ->
 
   init = ->
     console.log("inside the Posts init")
@@ -69,6 +69,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
     # Includes comments and user
     post: null
 
+    # postImage: new FileUploader({url: '/create_post.json'})
     postImage: null
 
     posts: []
@@ -77,7 +78,7 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
 
     createPost: ->
       if this.params
-        PostsService.createPost.query({ post_params: this.params, description: this.widgitDescription }, (responseData) ->
+        PostsService.createPost.query({ post_params: this.params, description: this.widgitDescription, post_image: this.postImage }, (responseData) ->
           if responseData.errors == false
             $scope.requestControl.post = responseData.post
 

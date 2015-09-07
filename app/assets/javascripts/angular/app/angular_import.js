@@ -15,6 +15,7 @@
 *= require angular/app/plugins/chosen/chosen.jquery.js
 *= require angular/app/directives/chosen.js
 *= require angular/app/directives/angular.audio.js
+*= require angularjs-file-upload
 
 *= require angular/app/plugins/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js
 *= require angular/app/plugins/angular-wysiwyg/dist/angular-wysiwyg.js

@@ -27,7 +27,8 @@
               .control-group
                 %label.control-label Post Image
                 .controls.form-group
-                  %input.form-control.input-sm{'ng-model' => 'requestControl.postImage', :type => 'file'}
+                  %input.form-control.input-sm#the_id{:type => 'file', 'ng-model' => 'requestControl.postImage'}
+                  / %input{"nv-file-select" => "", :type => "file", :uploader => "requestControl.postImage"}/
 
               .control-group
                 %label.control-label Summary
