@@ -69,6 +69,8 @@ ThePshqEntrepreneur.controller 'PostsController', ['$scope', '$http', '$location
     # Includes comments and user
     post: null
 
+    postImage: null
+
     posts: []
 
     widgitDescription: null

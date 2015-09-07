@@ -25,14 +25,14 @@
                       %i.glyphicon.glyphicon-calendar
 
               .control-group
+                %label.control-label Post Image
+                .controls.form-group
+                  %input.form-control.input-sm{'ng-model' => 'requestControl.postImage', :type => 'file'}
+
+              .control-group
                 %label.control-label Summary
                 .controls.form-group
                   %textarea.form-control.input-sm{'ng-model' => 'requestControl.params.summary', :type => 'text', :placeholder => 'Enter..', :rows => 8}
-
-              / .control-group
-              /   %label.control-label Description
-              /   .controls.form-group
-              /     %textarea.form-control.input-sm{'ng-model' => 'requestControl.params.description', :type => 'text', :placeholder => 'Enter..', :rows => 15}
 
               .control-group
                 %label.control-label Description
