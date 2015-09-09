@@ -43,6 +43,19 @@ ThePshqEntrepreneur.controller 'DashboardController', ['$scope', '$http', '$loca
         $scope.audio = ngAudio.load(this.selectedPodcast.recording)
   }
 
+  $scope.tabControl = {
+
+    currentView: 'general'
+
+    changeView: (newView) ->
+      if newView && newView.length > 0
+        this.currentView = newView
+
+    checkIfActive: (view) ->
+      if view && view.length > 0 && this.currentView && view == this.currentView then return 'active' else return null
+
+  }
+
 ################################################################
 ################# Initialize ###################################
 

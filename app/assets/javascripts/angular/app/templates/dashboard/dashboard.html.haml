@@ -3,6 +3,67 @@
   / Featured Content / Start
   #featured-content.clearfix.no-padding
     .container
+      .col-sm-4
+        .viewcode-example
+          .panel.panel-default
+            .panel-body
+              %p
+                = image_tag "PSHQ-Entrepreneur-300-250.jpg"
+            .panel-footer
+              %a.btn.btn-danger.block{:href => '/podcasts', :style => 'display: block; width: 100%;color: white;'} Check out the Podcasts
+
+      .col-sm-8
+        .viewcode-example
+          .panel.panel-default
+            .panel-heading
+              %a.btn.btn-pshq-blue.block{:href => '/', :style => 'display: block; width: 100%;color: white;'} Are you the 2015 Entrepreneur?   
+            .panel-body{:style => 'height: 250px;'}
+              .tools
+                %ul.nav.nav-tabs{:role => "tablist"}
+                  %li{'ng-class' => "tabControl.checkIfActive('general')"}
+                    %a{"data-toggle" => "tab", :href => "", 'ng-click' => "tabControl.changeView('general')", :style => 'color: black;'} General Details
+                  %li{'ng-class' => "tabControl.checkIfActive('winners')"}
+                    %a{"data-toggle" => "tab", :href => "", 'ng-click' => "tabControl.changeView('winners')", :style => 'color: black;'} Winners
+
+              %br
+              .tab-content
+                #tab_1{'ng-if' => "tabControl.currentView === 'general'"}
+                  %p.make-black
+                    Problem Solution HQ, (PSHQ) is looking for partners that support our mission statement to “Help people every day with useful products that enrich their businesses and lives.” 
+                  %p.make-black
+                    Qualified applicants will share their accomplishments and future visions on their own Podcast distributed to our network of business partners and thought leaders.
+                  %p.make-black
+                    Listeners will be asked to vote for the PSHQ Entrepreneur over a 90 day period.
+                  %p.make-black
+                    Votes will be collected through various social media sites to strongly influence the decision of the partners of PSHQ when selecting their next Entrepreneur Partner!
+
+                #tab_2{'ng-if' => "tabControl.currentView === 'winners'"}
+                  .col-sm-6
+                    %p.make-black
+                      The Entrepreneur will receive:
+                    %p.make-black
+                      Professional consultations with the partners of PSHQ including
+                    %p.make-black
+                      Product evaluation and competitive market analysis
+                    %p.make-black
+                      Assistance in developing a business plan and pro-forma
+                    / %p.make-black
+                    /   Evaluation of required barriers to entry for the competition
+                    / %p.make-black
+                    /   Introductions to the PSHQ network of business partners
+                  .col-sm-6
+                    %p.make-black 
+                      Percent equity in products developed through our combined efforts
+                    %p.make-black
+                      Support in soliciting venture-capital
+                    %p.make-black
+                      Resources and experience to build and market their product
+                    %p.make-black
+                      All applicants will retain their podcast for their own marketing efforts
+
+            .panel-footer
+              %a.btn.btn-pshq-green.block{:href => '/', :style => 'display: block; width: 100%;color: white;'} If you qualify to be The Next PSHQ Entrepreneur Register now!
+
 
       / %carousel{"no-wrap" => "noWrapSlides"}
       /   %slide{:active => "podcast.active", "ng-repeat" => "podcast in requestControl.podcasts"}
