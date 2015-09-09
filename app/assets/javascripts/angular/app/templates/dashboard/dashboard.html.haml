@@ -4,39 +4,39 @@
   #featured-content.clearfix.no-padding
     .container
 
-      %carousel{"no-wrap" => "noWrapSlides"}
-        %slide{:active => "podcast.active", "ng-repeat" => "podcast in requestControl.podcasts"}
+      / %carousel{"no-wrap" => "noWrapSlides"}
+      /   %slide{:active => "podcast.active", "ng-repeat" => "podcast in requestControl.podcasts"}
 
-          %ul
-            %li
-              %article.hentry.clearfix
-                %a{:href => '/podcasts/{{podcast.podcast_id}}', :rel => 'bookmark'}
-                  %img.entry-thumbnail{'ng-src' => "{{podcast.image}}", :style => "margin:auto;"}
-                .entry-meta
-                  %span.entry-date {{podcast.air_date}}
-                %p
-                  %h3.entry-title{:style => 'margin: 0; height: 25px;'}
-                    %span.entry-date{:style => 'color: white;'} Episode: {{podcast.episode_number}}
-                %p
-                  %h2.entry-title{:style => 'margin: 0;'}
-                    %span.entry-date{:style => 'color: white;'} {{podcast.name}}
-                .entry-summary
-                  {{podcast.summary}}
-                .entry-share-icons
-                  %a{:href => "#", :title => "Twitter"}
-                    %i.fa.fa-twitter
-                  %a{:href => "#", :title => "Facebook"}
-                    %i.fa.fa-facebook
-                  %a{:href => "#", :title => "GooglePlus"}
-                    %i.fa.fa-google-plus
-                  %a{:href => "#", :title => "Pinterest"}
-                    %i.fa.fa-pinterest
-                  %a{:href => "#", :title => "LinkedIn"}
-                    %i.fa.fa-linkedin
+      /     %ul
+      /       %li
+      /         %article.hentry.clearfix
+      /           %a{:href => '/podcasts/{{podcast.podcast_id}}', :rel => 'bookmark'}
+      /             %img.entry-thumbnail{'ng-src' => "{{podcast.image}}", :style => "margin:auto;"}
+      /           .entry-meta
+      /             %span.entry-date {{podcast.air_date}}
+      /           %p
+      /             %h3.entry-title{:style => 'margin: 0; height: 25px;'}
+      /               %span.entry-date{:style => 'color: white;'} Episode: {{podcast.episode_number}}
+      /           %p
+      /             %h2.entry-title{:style => 'margin: 0;'}
+      /               %span.entry-date{:style => 'color: white;'} {{podcast.name}}
+      /           .entry-summary
+      /             {{podcast.summary}}
+      /           .entry-share-icons
+      /             %a{:href => "#", :title => "Twitter"}
+      /               %i.fa.fa-twitter
+      /             %a{:href => "#", :title => "Facebook"}
+      /               %i.fa.fa-facebook
+      /             %a{:href => "#", :title => "GooglePlus"}
+      /               %i.fa.fa-google-plus
+      /             %a{:href => "#", :title => "Pinterest"}
+      /               %i.fa.fa-pinterest
+      /             %a{:href => "#", :title => "LinkedIn"}
+      /               %i.fa.fa-linkedin
 
     / END list group
-  .panel-footer
-    .clearfix
+  .container
+    #more-content.content-loop
       %article.hentry.post.clearfix
         .padding-md.clearfix
           .panel.panel-default.table-responsive
@@ -59,48 +59,6 @@
             %i.fa.fa-pinterest
           %a{:href => "#", :title => "LinkedIn"}
             %i.fa.fa-linkedin
-
-  .container
-    / More Content / Start
-    #more-content.content-loop
-      %h3.section-title
-        Latest Posts
-        %span.see-all
-          %a{:href => "/posts"}
-            Browse All Posts
-            %i.fa.fa-angle-right
-      %ul
-        %li.clearfix{'ng-repeat' => 'post in requestControl.posts'}
-          %article#post-1.hentry.post.clearfix
-            %a{:href => "single_post.html"}
-              %img.entry-thumbnail{:alt => "Post Title", :src => "http://placehold.it/200x200"}/
-            .entry-meta
-              %span.entry-category
-                %a{:href => "archive.html"} Category 1
-              %span.entry-date {{post.post_date}}
-            %h2.entry-title
-              %a{:href => '/posts/{{post.post_id}}', :rel => 'bookmark'} {{post.name}}
-            .byline
-              %span.entry-view 123 Views
-              %span.entry-comment
-                %a{:href => "single_post.html#comments"} 14
-              %span.entry-author
-                by
-                %a{:href => "archive.html"} {{post.user.full_name}}
-            .entry-summary
-              {{post.summary}}
-            .entry-share-icons
-              %a{:href => "#", :title => "Twitter"}
-                %i.fa.fa-twitter
-              %a{:href => "#", :title => "Facebook"}
-                %i.fa.fa-facebook
-              %a{:href => "#", :title => "GooglePlus"}
-                %i.fa.fa-google-plus
-              %a{:href => "#", :title => "Pinterest"}
-                %i.fa.fa-pinterest
-              %a{:href => "#", :title => "LinkedIn"}
-                %i.fa.fa-linkedin
-
 
     / More Content / Start
     #secondary.widget-area.widget-primary{:role => "complementary"}
@@ -141,6 +99,90 @@
         %h5 lead pages link promo
 
     .clearfix
+
+  .panel-footer
+    .clearfix
+
+  .container
+    / More Content / Start
+    #recent-content.container.clearfix
+      %h3.section-title
+        Latest Posts
+        %span.see-all
+          %a{:href => "/posts"}
+            Browse All Posts
+            %i.fa.fa-angle-right
+
+      %article.hentry{'ng-repeat' => 'post in requestControl.posts'}
+        %a{:href => "single_post.html"}
+          %img.entry-thumbnail{:alt => "Post Title", :src => "http://placehold.it/340x190"}/
+        .entry-meta
+          %span.entry-category
+            %a{:href => "archive.html"} Category 1
+          %span.entry-date {{post.post_date}}
+        %h2.entry-title
+          %a{:href => '/posts/{{post.post_id}}', :rel => 'bookmark'} {{post.name}}
+        .byline
+          %span.entry-view 123 Views
+          %span.entry-comment
+            %a{:href => "single_post.html#comments"} 14
+          %span.entry-author
+            by
+            %a{:href => "archive.html"} {{post.user.full_name}}
+        .entry-summary
+          {{post.summary}}
+        .entry-share-icons
+          %a{:href => "#", :title => "Twitter"}
+            %i.fa.fa-twitter
+          %a{:href => "#", :title => "Facebook"}
+            %i.fa.fa-facebook
+          %a{:href => "#", :title => "GooglePlus"}
+            %i.fa.fa-google-plus
+          %a{:href => "#", :title => "Pinterest"}
+            %i.fa.fa-pinterest
+          %a{:href => "#", :title => "LinkedIn"}
+            %i.fa.fa-linkedin
+
+
+    / More Content / Start
+    / #secondary.widget-area.widget-primary{:role => "complementary"}
+    /   / Subscribe Widget / Start
+    /   .widget.subscribe-widget
+    /     %h3.widget-title
+    /       = image_tag "PSHQ-logo-med.jpg"
+    /     %fieldset
+    /       %legend.section
+    /         %h3.text-center
+    /           %i.fa.fa-star
+    /           %strong Business Apps
+
+    /     %fieldset
+    /       %legend.section
+    /         %h5.text-center
+    /           = image_tag "PSHQCallTracker.com-side.jpg"
+    /           %strong Text Describing Product MT2W
+
+    /     %fieldset
+    /       %legend.section
+    /         %h5.text-center
+    /           = image_tag "PSHQCallTracker.com-side.jpg"
+    /           %strong Text Describing Product TMA
+
+    /     %fieldset
+    /       %legend.section
+    /         %h5.text-center
+    /           = image_tag "PSHQCallTracker.com-side.jpg"
+    /           %strong Text Describing Product CT
+
+    /     %fieldset
+    /       %legend.section
+    /         %h5.text-center
+    /           = image_tag "PSHQCallTracker.com-side.jpg"
+    /           %strong Text Describing Product COM
+
+    /     %h5 lead pages link promo
+
+    / .clearfix
   / .container
 / Primary / End
 
